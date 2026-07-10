@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>锂电产业链新闻日报 | 2026-07-10</title>
+  <style>
+    :root {
+      --ink: #17324a;
+      --muted: #5b7185;
+      --blue: #1769aa;
+      --blue-deep: #0d4f86;
+      --blue-pale: #eaf6ff;
+      --paper: #fbfdff;
+      --line: #87bce5;
+      --yellow: #ffe998;
+      --coral: #ffad9f;
+      --mint: #d9f3e4;
+      --shadow: rgba(23, 50, 74, 0.09);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: #eef7fd; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+      letter-spacing: 0;
+      background:
+        repeating-linear-gradient(0deg, rgba(23, 105, 170, 0.025) 0, rgba(23, 105, 170, 0.025) 1px, transparent 1px, transparent 28px),
+        var(--paper);
+    }
+
+    a {
+      color: #0a62ad;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      overflow-wrap: anywhere;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 52px;
+    }
+
+    .masthead {
+      position: relative;
+      padding: 26px 28px;
+      border: 2px dashed var(--line);
+      border-radius: 8px;
+      background: #f5fbff;
+      box-shadow: 0 12px 28px var(--shadow);
+    }
+
+    .masthead::before {
+      content: "";
+      display: block;
+      width: 94px;
+      height: 8px;
+      margin-bottom: 14px;
+      border-radius: 4px;
+      background: repeating-linear-gradient(90deg, var(--coral) 0 10px, var(--yellow) 10px 20px, var(--blue) 20px 30px);
+    }
+
+    .kicker {
+      margin: 0 0 6px;
+      color: var(--blue-deep);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { letter-spacing: 0; }
+
+    h1 {
+      margin: 0;
+      color: var(--blue);
+      font-size: 2.35rem;
+      line-height: 1.2;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0 0;
+    }
+
+    .meta span {
+      padding: 4px 9px;
+      border: 1px solid #b7d6ee;
+      border-radius: 999px;
+      background: #fff;
+      color: #355b78;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .source-note {
+      margin: 18px 0 0;
+      padding: 13px 15px;
+      border-left: 5px solid var(--blue);
+      border-radius: 6px;
+      background: #fff;
+      color: #34546c;
+      font-size: 0.94rem;
+    }
+
+    .report-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 30px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px dashed var(--line);
+    }
+
+    .report-head h2 {
+      margin: 0;
+      color: var(--blue-deep);
+      font-size: 1.45rem;
+    }
+
+    .report-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .segment { margin-top: 26px; }
+
+    .segment-title {
+      display: inline-block;
+      margin: 0 0 12px;
+      padding: 5px 11px;
+      border: 1px solid #e9c96d;
+      border-radius: 6px;
+      background: #fff7cd;
+      color: #274e70;
+      font-size: 1.08rem;
+      line-height: 1.4;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .card {
+      position: relative;
+      padding: 18px 19px;
+      border: 1.5px solid #a9cce7;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 7px 18px var(--shadow);
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 70px;
+      height: 5px;
+      border-radius: 0 6px 0 6px;
+      background: var(--coral);
+    }
+
+    .card h3 {
+      margin: 0;
+      padding-right: 76px;
+      color: #174f7d;
+      font-size: 1.08rem;
+      line-height: 1.42;
+    }
+
+    .date {
+      margin: 7px 0 10px;
+      color: var(--muted);
+      font-size: 0.87rem;
+      font-weight: 700;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 10px 0 12px;
+    }
+
+    .tag {
+      max-width: 100%;
+      padding: 3px 8px;
+      border: 1px solid #bfd9ec;
+      border-radius: 999px;
+      background: var(--blue-pale);
+      color: #315b78;
+      font-size: 0.8rem;
+      font-weight: 750;
+    }
+
+    .tag.geo { border-color: #eadb99; background: #fff9dc; color: #6d5700; }
+    .tag.topic { border-color: #f0c6be; background: #fff0ed; color: #803d35; }
+    .tag.company { border-color: #b9dfc9; background: #ecfaf2; color: #236044; }
+
+    .card p { margin: 9px 0; }
+
+    .label {
+      color: var(--blue-deep);
+      font-weight: 850;
+    }
+
+    .context {
+      padding: 9px 11px;
+      border-left: 4px solid #79acd4;
+      border-radius: 5px;
+      background: #f3f9fd;
+    }
+
+    .effect {
+      padding: 9px 11px;
+      border-left: 4px solid var(--coral);
+      border-radius: 5px;
+      background: #fff6f3;
+    }
+
+    .links {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed #a9cce7;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .links p { margin: 4px 0; }
+
+    @media (max-width: 720px) {
+      .page { width: min(100% - 20px, 1120px); padding-top: 14px; }
+      .masthead { padding: 20px; }
+      h1 { font-size: 1.8rem; }
+      .report-head { display: block; }
+      .report-head p { margin-top: 4px; }
+      .card { padding: 16px; }
+      .card h3 { padding-right: 42px; font-size: 1rem; }
+      .card::after { width: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <p class="kicker">Lithium Industry Daily</p>
+      <h1>锂电产业链新闻日报 | 2026-07-10</h1>
+      <div class="meta">
+        <span>报告日期：2026-07-10</span>
+        <span>时区：Asia/Shanghai</span>
+        <span>检索截止：2026-07-10 15:16 CST</span>
+        <span>新闻窗口：近 7 日为主，补充 7 月 1 日生效政策</span>
+      </div>
+      <p class="source-note"><strong>来源覆盖：</strong>本轮逐项检索了 SMM/上海有色网、Reuters、盖世汽车、中国汽车动力电池产业创新联盟和中汽协，并补充公司公告、交易所文件、政府网站及专业储能媒体。公开检索未获得可直接核验的近 7 日 SMM 与 Reuters 原文，也未检索到电池联盟截至截止时间发布的 6 月月度装车数据；因此上游和正极板块只保留可核验事件，不用旧综述补数。中国整车数据采用中汽协最新半年口径，合作和项目类新闻尽量加入双方历史公告。</p>
+    </header>
+
+    <div class="report-head">
+      <h2>新闻罗列</h2>
+      <p>共 29 条，按板块分组</p>
+    </div>
+
+    <section class="segment">
+      <h2 class="segment-title">上游镍钴锂 · 4 条</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Eni 以 2.25 亿美元收购 EnergyX 智利 Black Giant 锂项目 25% 股权</h3>
+          <p class="date">信息日期：2026-07-06</p>
+          <div class="tags">
+            <span class="tag">板块：上游镍钴锂</span>
+            <span class="tag geo">国家/地区：智利 / 意大利 / 美国</span>
+            <span class="tag company">公司：Eni、EnergyX、Black Giant SpA</span>
+            <span class="tag topic">主题：锂资源 / DLE / 股权投资 / 包销权</span>
+          </div>
+          <p><span class="label">本次事件：</span>Eni 签署协议，以分阶段总投资 2.25 亿美元收购 EnergyX 智利子公司 Black Giant SpA 25% 股权。项目位于智利北部 Punta Negra 盐湖附近，采用闭环直接提锂并回注卤水；满产目标为年产 5.25 万吨碳酸锂当量，首期 7,500 吨计划 2028 年启动，后续新增 4.5 万吨计划 2030 年启动。Eni 还将取得董事席位，并可包销项目总产量最多 25%。</p>
+          <p class="context"><span class="label">背景补充：</span>Eni 此前已通过企业风投部门 Eni Next 持有 EnergyX 少数股权；本次交易把双方关系从技术企业投资推进到具体矿权项目持股和实物锂包销。Eni 表示，取得的锂供应可连接其在意大利 Brindisi 推进的固定式锂电池超级工厂项目。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://www.eni.com/en-IT/media/press-release/2026/07/eni-invests-in-energyxs-black-giant-project-to-develop-lithium-business-in-chile.html">https://www.eni.com/en-IT/media/press-release/2026/07/eni-invests-in-energyxs-black-giant-project-to-develop-lithium-business-in-chile.html</a></p>
+            <p>对方链接：<a href="https://www.prnewswire.com/news-releases/energyx-secures-225-million-strategic-investment-from-eni-to-advance-the-black-giant-lithium-project-in-chile-302818289.html">https://www.prnewswire.com/news-releases/energyx-secures-225-million-strategic-investment-from-eni-to-advance-the-black-giant-lithium-project-in-chile-302818289.html</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Anson 为犹他 Green River 锂项目申请约 8,500 万美元美国能源部净资助</h3>
+          <p class="date">信息日期：2026-07-07</p>
+          <div class="tags">
+            <span class="tag">板块：上游镍钴锂</span>
+            <span class="tag geo">国家/地区：美国 / 澳大利亚</span>
+            <span class="tag company">公司：Anson Resources、A1 Lithium</span>
+            <span class="tag topic">主题：锂项目 / 政府资助 / 示范线 / FID</span>
+          </div>
+          <p><span class="label">本次事件：</span>Anson Resources 披露，旗下 A1 Lithium 已向美国能源部三个项目提交资助申请，扣除配套出资后的申请额合计约 8,560 万美元，并获得三名犹他州国会议员致函能源部长支持。若获批，资金将用于 Green River 锂项目及一条年产 100 吨的示范线：从 Boysdaba #1 井抽取原卤，经模块化选择性提锂制成高浓度氯化锂，再转化为电池级碳酸锂。</p>
+          <p class="context"><span class="label">背景补充：</span>申请分别在 2026 年 1 月和 4 月提交，目前能源部尚未公布遴选时间。公司把无股权稀释的政府资助列入项目资本结构，并计划利用示范线数据把项目推进至 2027 年下半年最终投资决定；在资助结果未确定前，仍同步寻找替代融资。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://www.marketindex.com.au/data-api/api/v1/announcements/XASX%3AASN%3A6A1332778/pdf/inline/secures-strong-support-from-us-congress-reps-for-d-oe-grants">https://www.marketindex.com.au/data-api/api/v1/announcements/XASX%3AASN%3A6A1332778/pdf/inline/secures-strong-support-from-us-congress-reps-for-d-oe-grants</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Surge 与 Evolution 完成 Nevada North 历史钻孔复测并纳入预可研模型</h3>
+          <p class="date">信息日期：2026-07-08</p>
+          <div class="tags">
+            <span class="tag">板块：上游镍钴锂</span>
+            <span class="tag geo">国家/地区：美国 / 加拿大 / 澳大利亚</span>
+            <span class="tag company">公司：Surge Battery Metals、Evolution Mining、RESPEC</span>
+            <span class="tag topic">主题：锂黏土 / 资源模型 / PFS / 联营项目</span>
+          </div>
+          <p><span class="label">本次事件：</span>Surge Battery Metals 与 Evolution Mining 组建的 Nevada North Lithium LLC 已取得 2022—2023 年全部钻孔的最终分析复测结果，确认铯、铷在矿体范围内具有连续性，主要矿化层平均值最高分别约 125 ppm 和 291 ppm。Surge 已委托 RESPEC 把结果并入 Nevada North 锂项目地质模型及即将开展的预可行性研究；这两种伴生元素此前未纳入锂资源量估算。</p>
+          <p class="context"><span class="label">背景补充：</span>项目 2026 年 5 月更新的锂资源量约为 6.575 亿吨、平均品位 3,007 ppm，折合约 1,050 万吨碳酸锂当量。当前复测并不等于新增锂资源量，主要是为预可研评估伴生元素回收与项目经济性提供数据。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://www.newsfilecorp.com/release/304337/">https://www.newsfilecorp.com/release/304337/</a></p>
+            <p>背景链接：<a href="https://www.newsfilecorp.com/company/9838/">https://www.newsfilecorp.com/company/9838/</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>智利上半年锂出口额升至 32.18 亿美元，碳酸锂贡献 23.52 亿美元</h3>
+          <p class="date">信息日期：2026-07-08</p>
+          <div class="tags">
+            <span class="tag">板块：上游镍钴锂</span>
+            <span class="tag geo">国家/地区：智利 / 全球</span>
+            <span class="tag company">公司/机构：智利央行、智利出口企业</span>
+            <span class="tag topic">主题：锂出口 / 碳酸锂 / 外贸数据</span>
+          </div>
+          <p><span class="label">本次事件：</span>智利央行口径显示，2026 年 1—6 月锂产品出口额达到 32.18 亿美元，接近 2025 年同期的三倍，并已超过 2025 年全年锂出口额。其中碳酸锂出口 23.52 亿美元，是最主要品类。同期智利全部商品出口首次在上半年突破 600 亿美元，中国、美国、日本和韩国分别占出口目的地的 33.9%、16.7%、8.3% 和 3.9%。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://www.latercera.com/pulso/noticia/exportaciones-de-litio-superan-los-us-3200-millones-en-el-primer-semestre-su-mayor-cifra-desde-2023/">https://www.latercera.com/pulso/noticia/exportaciones-de-litio-superan-los-us-3200-millones-en-el-primer-semestre-su-mayor-cifra-desde-2023/</a></p>
+            <p>交叉核验：<a href="https://www.emol.com/noticias/Economia/2026/07/08/1205037/record-primer-semestre-exportaciones-chilenas.html">https://www.emol.com/noticias/Economia/2026/07/08/1205037/record-primer-semestre-exportaciones-chilenas.html</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="segment">
+      <h2 class="segment-title">正极与前驱体 · 1 条</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>容百科技披露磷酸锰铁锂满产满销，钠电正极进入规模化出货</h3>
+          <p class="date">信息日期：2026-07-07</p>
+          <div class="tags">
+            <span class="tag">板块：正极与前驱体</span>
+            <span class="tag geo">国家/地区：中国</span>
+            <span class="tag company">公司：容百科技、宁德时代</span>
+            <span class="tag topic">主题：LFP / LMFP / 钠电正极 / 项目建设</span>
+          </div>
+          <p><span class="label">本次事件：</span>容百科技在 2026 年半年度业绩预告中披露，上半年预计实现归母净利润 1.0 亿—1.2 亿元、扣非净利润 0.9 亿—1.1 亿元，同比扭亏。经营进展方面，公司称磷酸铁锂正极项目按计划建设，磷酸锰铁锂业务已实现满产满销，钠电正极进入规模化出货阶段；另据公司此前项目安排，年产 34 万吨磷酸铁锂正极项目于 4 月启动，目标在 7 月完成建设。</p>
+          <p class="context"><span class="label">背景补充：</span>容百科技 2026 年 1 月与宁德时代签署 2026—2030 年磷酸铁锂采购合作协议，公司预测期内合计供应约 305 万吨。本次半年报进展意味着产能建设、LMFP 利用率和钠电材料商业化已从协议与规划阶段进入更明确的生产交付阶段。</p>
+          <p class="effect"><span class="label">正极相关影响：</span>新增 LFP 产能直接对应宁德时代长期采购框架；LMFP 满产满销说明锰掺杂磷酸盐路线已形成实际订单，而钠电正极规模化出货扩大了公司在储能和小动力场景的材料覆盖。公告未披露各路线具体吨数和客户拆分。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/688005_20260707_7XG2.pdf">https://star.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/688005_20260707_7XG2.pdf</a></p>
+            <p>背景链接：<a href="https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=11913341&amp;stockid=688005">https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=11913341&amp;stockid=688005</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="segment">
+      <h2 class="segment-title">电池与装机 · 4 条</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>宁德时代发布天行 II 轻商超充版，峰值 8C、6 分 48 秒充至 80%</h3>
+          <p class="date">信息日期：2026-07-07</p>
+          <div class="tags">
+            <span class="tag">板块：电池与装机</span>
+            <span class="tag geo">国家/地区：中国</span>
+            <span class="tag company">公司：宁德时代</span>
+            <span class="tag topic">主题：轻型商用车 / 8C 超充 / 换电 / 质保</span>
+          </div>
+          <p><span class="label">本次事件：</span>宁德时代推出天行 II 轻型商用车超充版，峰值充电倍率 8C；公司称在峰值条件下，从低电量充至 80% 用时 6 分 48 秒，充满用时 8 分 56 秒。电池提供最长 10 年或 100 万公里质保，电芯温度为零下 20℃时，充电仅比常温增加约 2.5 分钟。产品面向城配、城际物流、冷链和末端配送等高周转车辆。</p>
+          <p class="context"><span class="label">背景补充：</span>宁德时代同时发布乘商兼容的充换电一体站，针对微面和轻卡调整充电功率、线缆长度和停车接口。公司计划 2026 年部署 4,000 座一体站，覆盖约 190 个城市；当前仍属于产品发布与网络建设计划，实际车型配套和站点利用率尚待披露。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://autonews.gasgoo.com/articles/ev/catl-targets-fuel-like-turnaround-for-electric-logistics-fleets-with-tianxing-ii-battery-2074431678414893057">https://autonews.gasgoo.com/articles/ev/catl-targets-fuel-like-turnaround-for-electric-logistics-fleets-with-tianxing-ii-battery-2074431678414893057</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Tesla 开放柏林电芯产线给初创企业测试，18GWh 扩产项目同步推进</h3>
+          <p class="date">信息日期：2026-07-08；申请截止：2026-07-24</p>
+          <div class="tags">
+            <span class="tag">板块：电池与装机</span>
+            <span class="tag geo">国家/地区：德国 / 美国</span>
+            <span class="tag company">公司：Tesla、外部电池初创企业</span>
+            <span class="tag topic">主题：电芯制造 / 产线验证 / 18GWh / 工艺创新</span>
+          </div>
+          <p><span class="label">本次事件：</span>Tesla 在德国 Grünheide 超级工厂启动“Cell Giga Challenge”，邀请电池制造相关初创企业把设备、材料或工艺直接放入在运电芯产线进行试验。申请于 7 月 24 日截止，项目计划 8 月开始。Tesla 未公布最终入选数量和商业采购承诺；项目定位是缩短初创技术从实验室到量产线验证的周期。</p>
+          <p class="context"><span class="label">背景补充：</span>Tesla 5 月已承诺再投入约 2.5 亿美元，把柏林电芯单元目标产能由 8GWh 提高到 18GWh，累计电芯项目投资接近 10 亿欧元；18GWh 产能理论上可支持约 25 万—35 万辆汽车。此次开放产线是扩产工程中的工艺导入机制，并非单独的新建工厂。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://www.electrive.com/2026/07/08/tesla-launches-startup-programme-for-battery-cell-production-in-grunheide/">https://www.electrive.com/2026/07/08/tesla-launches-startup-programme-for-battery-cell-production-in-grunheide/</a></p>
+            <p>背景链接：<a href="https://electrek.co/2026/07/07/tesla-giga-berlin-cell-giga-challenge/">https://electrek.co/2026/07/07/tesla-giga-berlin-cell-giga-challenge/</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>LG 新能源与本田合资俄亥俄工厂投产，首批电芯转向储能系统</h3>
+          <p class="date">信息日期：2026-07-08；投产公告日期：2026-07-01</p>
+          <div class="tags">
+            <span class="tag">板块：电池与装机</span>
+            <span class="tag geo">国家/地区：美国 / 韩国 / 日本</span>
+            <span class="tag company">公司：LG Energy Solution、Honda、L-H Battery、LGES Vertech</span>
+            <span class="tag topic">主题：电芯投产 / EV 转储能 / 美国本土制造</span>
+          </div>
+          <p><span class="label">本次事件：</span>L-H Battery 位于美国俄亥俄州 Jeffersonville 的工厂开始生产锂离子电芯，产品可服务汽车和固定式储能；首批产线重点转向储能应用，并由 LGES Vertech 集成为住宅、工商业及电网级储能系统。公司澄清这些电芯并非只面向 AI 数据中心。工厂后续仍计划生产混合动力汽车电池，但未披露首批 ESS 电芯产能和客户订单。</p>
+          <p class="context"><span class="label">背景补充：</span>LG 新能源与本田 2023 年正式成立合资公司，原计划投资约 35 亿美元、创造约 2,200 个岗位，核心任务是为本田和 Acura 北美电动车生产电芯。本次从纯 EV 规划转向“储能先行、混动后续”，是双方对北美 EV 需求波动和储能本地化需求的产线调整。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://www.energy-storage.news/honda-lg-es-begin-ess-cell-production-at-retooled-ohio-ev-cell-facility/">https://www.energy-storage.news/honda-lg-es-begin-ess-cell-production-at-retooled-ohio-ev-cell-facility/</a></p>
+            <p>历史合作：<a href="https://global.honda/en/newsroom/news/2023/c230113beng.html">https://global.honda/en/newsroom/news/2023/c230113beng.html</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>比亚迪半导体 BMS AFE 芯片累计出货超过 1 亿颗</h3>
+          <p class="date">信息日期：2026-07-07</p>
+          <div class="tags">
+            <span class="tag">板块：电池与装机</span>
+            <span class="tag geo">国家/地区：中国 / 全球</span>
+            <span class="tag company">公司：比亚迪半导体、20 余家电池包及整车客户</span>
+            <span class="tag topic">主题：BMS / AFE 芯片 / 电芯监控 / 批量应用</span>
+          </div>
+          <p><span class="label">本次事件：</span>比亚迪半导体宣布，其电池管理系统模拟前端芯片累计出货超过 1 亿颗，已进入 20 多家电池包厂、整车厂和储能系统集成商，覆盖数百款车型和产品。AFE 芯片负责采集电压、电流和温度等模拟信号并转为数字数据，供主控进行 SOC、SOH 和充放电控制；公司称累计监控电芯超过 16 亿颗，五年以上运行期内未发生重大质量事故。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://autonews.gasgoo.com/articles/video/gasgoo-daily-gwm-autoliv-deepen-partnership-byd-tops-100m-bms-afe-chips-seyond-q2-lidar-shipments-385-2074479682798796801">https://autonews.gasgoo.com/articles/video/gasgoo-daily-gwm-autoliv-deepen-partnership-byd-tops-100m-bms-afe-chips-seyond-q2-lidar-shipments-385-2074479682798796801</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="segment">
+      <h2 class="segment-title">终端电车 · 8 条</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>比亚迪第 1,700 万辆新能源车下线，海豹 08 同步搭载二代刀片电池</h3>
+          <p class="date">信息日期：2026-07-09；下线日期：2026-07-08</p>
+          <div class="tags">
+            <span class="tag">板块：终端电车</span>
+            <span class="tag geo">国家/地区：中国 / 全球</span>
+            <span class="tag company">公司：比亚迪、海洋网</span>
+            <span class="tag topic">主题：产量里程碑 / 新车型 / 快充 / 海外销量</span>
+          </div>
+          <p><span class="label">本次事件：</span>比亚迪第 1,700 万辆新能源汽车在西安基地下线，纪念车型为海洋网旗舰轿车海豹 08。该车 7 月 2 日上市，售价 19.69 万—23.99 万元，纯电版最高 CLTC 续航 905 公里，搭载第二代刀片电池和闪充系统，并全系配置激光雷达辅助驾驶。公司上半年交付 180.85 万辆，乘用车及皮卡海外销量 78.94 万辆，同比增长 68%。</p>
+          <p class="context"><span class="label">背景补充：</span>本次下线把单一车型发布、累计产量和补能网络放在同一节点。比亚迪计划 2026 年底前在中国建设 2 万座闪充站；目前公开信息未披露海豹 08 的首月订单和二代刀片电池分车型装车量。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://autonews.gasgoo.com/articles/ev/byd-hits-production-milestone-of-17-million-new-energy-vehicles-2075130234079596544">https://autonews.gasgoo.com/articles/ev/byd-hits-production-milestone-of-17-million-new-energy-vehicles-2075130234079596544</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>奇瑞上半年新能源车销量 47.52 万辆，新能源出口同比增长 164.9%</h3>
+          <p class="date">信息日期：2026-07-08</p>
+          <div class="tags">
+            <span class="tag">板块：终端电车</span>
+            <span class="tag geo">国家/地区：中国 / 欧洲 / 全球</span>
+            <span class="tag company">公司：奇瑞集团、JAECOO、JETOUR、Luxeed</span>
+            <span class="tag topic">主题：新能源销量 / 出口 / 欧洲本地化</span>
+          </div>
+          <p><span class="label">本次事件：</span>奇瑞集团披露，2026 年上半年新能源车销量 475,238 辆，同比增长 32.3%；6 月新能源销量 113,583 辆，同比增长 58.7%，连续第三个月超过 10 万辆。同期集团出口 943,817 辆，同比增长 71.5%，新能源车出口增幅达到 164.9%；1—5 月欧洲新能源销量 68,949 辆，同比增长 458.62%。</p>
+          <p class="context"><span class="label">背景补充：</span>奇瑞已在西班牙启用欧洲运营中心和电动化研发机构，在英国利物浦设立商用车区域总部，并在 7 月 3 日完成对南非 Rosslyn 工厂的收购复产、保留 692 名员工。销售增长因此同时对应出口、当地研发和生产恢复，而不只是国内批发数据。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://autonews.gasgoo.com/articles/market-industry/chery-groups-nev-sales-reach-475000-units-in-h1-2026-2074839299739398145">https://autonews.gasgoo.com/articles/market-industry/chery-groups-nev-sales-reach-475000-units-in-h1-2026-2074839299739398145</a></p>
+            <p>出口细节：<a href="https://autonews.gasgoo.com/articles/market-industry/chery-groups-h1-2026-exports-exceed-940000-units-2074841180641480704">https://autonews.gasgoo.com/articles/market-industry/chery-groups-h1-2026-exports-exceed-940000-units-2074841180641480704</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>零跑 B10 在墨西哥完成认证并交付，借 Stellantis 网络进入北美</h3>
+          <p class="date">信息日期：2026-07-06</p>
+          <div class="tags">
+            <span class="tag">板块：终端电车</span>
+            <span class="tag geo">国家/地区：墨西哥 / 中国 / 荷兰</span>
+            <span class="tag company">公司：零跑汽车、Stellantis、Mopar</span>
+            <span class="tag topic">主题：海外上市 / 本地认证 / 经销网络 / 合资出海</span>
+          </div>
+          <p><span class="label">本次事件：</span>零跑 B10 在墨西哥完成本地认证并开始交付，成为零跑进入北美市场的首款车型。车辆在 Stellantis 墨西哥工程与验证中心完成一年以上的高海拔、沙漠和热带雨林环境测试；销售网络已覆盖 40 多家授权门店，Mopar 负责售后及配件，零跑提供 4 年整车和 8 年高压电池质保。C10、C16 计划后续进入当地市场。</p>
+          <p class="context"><span class="label">背景补充：</span>Stellantis 2023 年以约 15 亿欧元取得零跑约 21% 股权，并组建 51%/49% 的零跑国际合资公司，获得大中华区以外销售和制造权。双方 2025 年扩展到南美、亚太、中东和非洲，2026 年 4 月开始导入墨西哥；本次 B10 交付是该渠道合作从品牌进入转为真实零售运营。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://autonews.gasgoo.com/articles/ev/leapmotor-taps-north-american-market-with-leapmotor-b10-model-launched-in-mexico-2074019260891189248">https://autonews.gasgoo.com/articles/ev/leapmotor-taps-north-american-market-with-leapmotor-b10-model-launched-in-mexico-2074019260891189248</a></p>
+            <p>历史合作：<a href="https://www.stellantis.com/en/news/press-releases/2023/october/stellantis-to-become-a-strategic-shareholder-of-leapmotor-with-1-5-billion-investment-and-bolster-leapmotor-s-global-electric-vehicle-business">https://www.stellantis.com/en/news/press-releases/2023/october/stellantis-to-become-a-strategic-shareholder-of-leapmotor-with-1-5-billion-investment-and-bolster-leapmotor-s-global-electric-vehicle-business</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>小鹏 MONA L03 今日启动全国试驾，预售价 14.38 万—16.58 万元</h3>
+          <p class="date">信息日期：2026-07-10；预售日期：2026-07-02</p>
+          <div class="tags">
+            <span class="tag">板块：终端电车</span>
+            <span class="tag geo">国家/地区：中国 / 欧洲 / 64 个规划市场</span>
+            <span class="tag company">公司：小鹏汽车、MONA</span>
+            <span class="tag topic">主题：新车型 / 试驾 / BEV / 增程 / 全球发布</span>
+          </div>
+          <p><span class="label">本次事件：</span>小鹏 MONA L03 自 7 月 10 日起在全国门店分批开放试驾。该紧凑型 SUV 已于 7 月 2 日开启预售，共六款配置，预售价 14.38 万—16.58 万元；纯电版提供 525 公里和 625 公里 CLTC 续航，增程版纯电续航 315 公里、综合续航 1,330 公里，全系标配高阶智能驾驶系统。</p>
+          <p class="context"><span class="label">背景补充：</span>L03 是 MONA 从 M03 轿车向 SUV 扩展的首款产品，也是小鹏按中国、欧洲和澳大利亚安全要求同步开发的全球车型。公司计划 7 月 16 日在慕尼黑举行全球上市发布，并称年内覆盖 64 个市场；当前披露的是预售和试驾阶段，正式售价及交付节奏尚未公布。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://autonews.gasgoo.com/articles/ev/xpeng-mona-l03-to-start-nationwide-test-drives-on-the-10th-of-this-month-2074094812364849153">https://autonews.gasgoo.com/articles/ev/xpeng-mona-l03-to-start-nationwide-test-drives-on-the-10th-of-this-month-2074094812364849153</a></p>
+            <p>预售链接：<a href="https://autonews.gasgoo.com/articles/ev/xpeng-opens-pre-sales-for-mona-l03-suv-with-bev-reev-variants-2072952776773386241">https://autonews.gasgoo.com/articles/ev/xpeng-opens-pre-sales-for-mona-l03-suv-with-bev-reev-variants-2072952776773386241</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>吉利银河 TT 全球首发，采用 800V 架构和激光雷达辅助驾驶</h3>
+          <p class="date">信息日期：2026-07-07</p>
+          <div class="tags">
+            <span class="tag">板块：终端电车</span>
+            <span class="tag geo">国家/地区：中国 / 全球</span>
+            <span class="tag company">公司：吉利银河、吉利集团</span>
+            <span class="tag topic">主题：纯电轿车 / 800V / 新车首发 / 智能驾驶</span>
+          </div>
+          <p><span class="label">本次事件：</span>吉利银河在上海全球首发 C 级纯电运动轿车 Galaxy TT。新车车长 4,999 毫米、轴距 2,920 毫米，采用 800V 高压架构、前双叉臂和后五连杆悬架、三段式主动尾翼，以及带激光雷达的自研 G-ASD 辅助驾驶系统；座舱搭载第二代 Flyme Auto。吉利尚未公布电池容量、续航、充电时间、售价和量产交付日期。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://autonews.gasgoo.com/articles/ev/geely-galaxy-tt-makes-global-debut-as-fashion-led-electric-sport-sedan-2074437370727149569">https://autonews.gasgoo.com/articles/ev/geely-galaxy-tt-makes-global-debut-as-fashion-led-electric-sport-sedan-2074437370727149569</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>小米汽车发布 SkyNomad 新系列名称，车型规格和投产计划仍未披露</h3>
+          <p class="date">信息日期：2026-07-08</p>
+          <div class="tags">
+            <span class="tag">板块：终端电车</span>
+            <span class="tag geo">国家/地区：中国</span>
+            <span class="tag company">公司：小米汽车</span>
+            <span class="tag topic">主题：产品系列 / 商标 / 新品牌预告</span>
+          </div>
+          <p><span class="label">本次事件：</span>小米汽车正式公布新车系列名称 SkyNomad，并以“天空、游牧，关于空间与生活方式的新名字”描述其定位；小米汽车科技已注册“小米澎程”微信公众号、视频号和 Bilibili 账号。公司此次只确认系列名称，没有公布首款车型的动力形式、尺寸、售价、上市日期或生产基地。</p>
+          <p class="context"><span class="label">背景补充：</span>公开商标记录显示，小米 2023 年申请“寻天”、2024 年申请 SKYNOMAD 汽车类别商标。市场把该系列与代号 Kunlun N3 的增程 SUV 联系起来，但小米尚未确认相关车型、代号或 2026 年下半年上市传闻，日报不把这些内容当作已确定产品计划。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://autonews.gasgoo.com/articles/ev/xiaomi-ev-unveils-skynomad-brand-fueling-speculation-over-new-suv-lineup-2074858617034293248">https://autonews.gasgoo.com/articles/ev/xiaomi-ev-unveils-skynomad-brand-fueling-speculation-over-new-suv-lineup-2074858617034293248</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>广汽联合 GreenV 与 99，计划 2030 年前在巴西部署 242 座快充站</h3>
+          <p class="date">信息日期：2026-07-08</p>
+          <div class="tags">
+            <span class="tag">板块：终端电车</span>
+            <span class="tag geo">国家/地区：巴西 / 中国</span>
+            <span class="tag company">公司：广汽能源、广汽国际、GreenV、99</span>
+            <span class="tag topic">主题：充电网络 / 海外合作 / 网约车电动化</span>
+          </div>
+          <p><span class="label">本次事件：</span>广汽能源、广汽国际、巴西充电运营商 GreenV 和出行平台 99 达成战略合作，目标 2030 年前在巴西部署 242 座快充站。广汽能源提供 60kW 和 120kW 设备及技术方案，广汽国际导入电动车，GreenV 负责站点投资、平台和运营，99 通过司机激励和用户流量推动车辆电动化。协议未披露投资金额、年度建设节奏和首批城市。</p>
+          <p class="context"><span class="label">背景补充：</span>截至 2026 年 2 月，巴西公共和半公共充电站约 21,060 座，同比增长 42%，但插电车辆接近 39.5 万辆，车桩比约 18.7:1。GreenV 已管理超过 15,000 个充电点、在巴西实际部署 600 多台设备，本次合作把其站点运营与广汽车辆销售、99 司机需求连接起来。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://autonews.gasgoo.com/articles/market-industry/gac-greenv-and-99-join-forces-to-fill-brazils-charging-gap-2074840346801254401">https://autonews.gasgoo.com/articles/market-industry/gac-greenv-and-99-join-forces-to-fill-brazils-charging-gap-2074840346801254401</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>中汽协：上半年中国新能源汽车销量 744.6 万辆，6 月渗透率 58.5%</h3>
+          <p class="date">信息日期：2026-07-09</p>
+          <div class="tags">
+            <span class="tag">板块：终端电车</span>
+            <span class="tag geo">国家/地区：中国</span>
+            <span class="tag company">公司/机构：中国汽车工业协会、中国整车企业</span>
+            <span class="tag topic">主题：产销数据 / 新能源渗透率 / 终端需求</span>
+          </div>
+          <p><span class="label">本次事件：</span>中国汽车工业协会发布 2026 年上半年数据：新能源汽车产量 743.8 万辆、销量 744.6 万辆，纯电动车约占新能源销量 67%。6 月单月新能源产量 159.8 万辆、销量 164.3 万辆，同比增幅均超过 20%；新能源汽车占当月汽车新车总销量 58.5%。该数据为整车批发口径，不等同于终端上险或零售销量。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://finance.people.com.cn/n1/2026/0709/c1004-40756926.html">https://finance.people.com.cn/n1/2026/0709/c1004-40756926.html</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="segment">
+      <h2 class="segment-title">终端储能 · 7 条</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Peak Energy 选址萨克拉门托建设 4GWh 钠离子储能工厂</h3>
+          <p class="date">信息日期：2026-07-08；计划出货：2027 年第一季度</p>
+          <div class="tags">
+            <span class="tag">板块：终端储能</span>
+            <span class="tag geo">国家/地区：美国</span>
+            <span class="tag company">公司：Peak Energy、GM、Jupiter Power、RWE、Energy Vault</span>
+            <span class="tag topic">主题：钠离子 / 储能制造 / 4GWh / 美国本土化</span>
+          </div>
+          <p><span class="label">本次事件：</span>Peak Energy 选定加州萨克拉门托建设其首座专门面向电网级钠离子储能系统的工厂。项目建筑面积 18.3 万平方英尺，年产能最高 4GWh，资本投入最高 7,100 万美元，未来 18 个月计划新增 239 个岗位，并获得 1,050 万美元 CalCompetes 税收抵免。工厂计划 2027 年第一季度投产并开始出货，现有客户承诺量超过 6GWh。</p>
+          <p class="context"><span class="label">背景补充：</span>Peak 已与 Jupiter Power、RWE Americas 和 Energy Vault 签订项目或客户协议。2026 年 6 月，Peak 又与通用汽车达成战略合作，由 GM 开发面向电网储能的下一代钠离子电芯，Peak 提供被动冷却系统平台；本次工厂选址把该技术合作推进到系统制造和交付端。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://peakenergy.com/news/latest/gigafactory-announcement">https://peakenergy.com/news/latest/gigafactory-announcement</a></p>
+            <p>合作背景：<a href="https://www.prnewswire.com/news-releases/peak-energy-and-general-motors-partner-to-scale-next-generation-energy-storage-technology-for-the-grid-302795688.html">https://www.prnewswire.com/news-releases/peak-energy-and-general-motors-partner-to-scale-next-generation-energy-storage-technology-for-the-grid-302795688.html</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Solar Pacific 为帕劳光储项目新增 19.8MWh 电池系统</h3>
+          <p class="date">信息日期：2026-07-10</p>
+          <div class="tags">
+            <span class="tag">板块：终端储能</span>
+            <span class="tag geo">国家/地区：帕劳 / 澳大利亚 / 菲律宾</span>
+            <span class="tag company">公司：Solar Pacific、Alternergy、PPUC、AIFFP</span>
+            <span class="tag topic">主题：岛屿光储 / 扩容 / 开发融资 / 柴油替代</span>
+          </div>
+          <p><span class="label">本次事件：</span>Alternergy 子公司 Solar Pacific Pristine Power 将为帕劳 Babeldaob 岛现有光储电站新增 19.8MWh 电池储能，并继续负责开发和运营。扩容后，项目电池规模将由 10.2MW/12.9MWh 提高到 15MW/32.7MWh，用于帕劳公共事业公司电网、提高光伏消纳并减少进口柴油发电。澳大利亚太平洋基础设施融资工具 AIFFP 为交易提供支持，新增融资金额未披露。</p>
+          <p class="context"><span class="label">背景补充：</span>原项目 2023 年投运，配置 15.28MWp 光伏和 12.9MWh 储能，总投资 2,900 万美元，其中 AIFFP 提供 1,800 万美元贷款和 400 万美元赠款；项目设计供给帕劳约四分之一用电。本次是在已运行项目上扩容，不是新建独立电站。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://www.energy-storage.news/palau-solar-plus-storage-site-to-add-19-8mwh-bess-in-australian-backed-augmentation/">https://www.energy-storage.news/palau-solar-plus-storage-site-to-add-19-8mwh-bess-in-australian-backed-augmentation/</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Alpiq 收购 Harmony Energy 90% 股权，纳入约 400MW 在建储能资产</h3>
+          <p class="date">信息日期：2026-07-09</p>
+          <div class="tags">
+            <span class="tag">板块：终端储能</span>
+            <span class="tag geo">国家/地区：瑞士 / 英国 / 欧洲</span>
+            <span class="tag company">公司：Alpiq、Harmony Energy</span>
+            <span class="tag topic">主题：并购 / BESS 开发平台 / 欧洲储能</span>
+          </div>
+          <p><span class="label">本次事件：</span>瑞士电力公司 Alpiq 将收购英国储能开发运营商 Harmony Energy 90% 股权，把 Harmony 的多吉瓦项目管线和约 400MW 在建资产纳入其灵活性业务。交易金额未披露；Harmony 保留品牌和独立运营，联合创始人 Peter Kavanagh 继续担任 CEO 并持有剩余 10% 股权。因项目管线规模较大，收购后仍可能向第三方出售部分项目。</p>
+          <p class="context"><span class="label">背景补充：</span>双方此前已有两次资产交易：Alpiq 2024 年 11 月购买法国 Oise 的 100MW/200MWh 项目，2026 年 1 月再收购 Nantes Saint-Nazaire 港口同规模的 Cheviré 项目。Alpiq 表示，连续交易形成的业务信任是本次从单项目购买升级为开发商控股收购的基础。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://www.energy-storage.news/alpiq-acquires-harmony-energy/">https://www.energy-storage.news/alpiq-acquires-harmony-energy/</a></p>
+            <p>历史合作：<a href="https://www.alpiq.com/newsroom/media-releases/alpiq-continues-to-invest-in-flexibility-and-acquires-a-100-mw-battery-project-in-france">https://www.alpiq.com/newsroom/media-releases/alpiq-continues-to-invest-in-flexibility-and-acquires-a-100-mw-battery-project-in-france</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Frontier Power 与 Stella 选定四个项目，计划部署 230MW/920MWh Eos 锌储能</h3>
+          <p class="date">信息日期：2026-07-09；公司公告日期：2026-07-07</p>
+          <div class="tags">
+            <span class="tag">板块：终端储能</span>
+            <span class="tag geo">国家/地区：美国 / 得州为主</span>
+            <span class="tag company">公司：Frontier Power USA、Stella Energy、Eos、Cerberus</span>
+            <span class="tag topic">主题：长时储能 / 锌混合正极 / 项目转换 / 920MWh</span>
+          </div>
+          <p><span class="label">本次事件：</span>Frontier Power USA 行使排他选择权，从 Stella Energy 管线中选定 Blanquilla、Aransas Pass、Nash 和 Wallis 四个储能项目，合计约 230MW/920MWh，计划采用 Eos Z3 锌混合正极长时储能系统。项目最终交割仍取决于 Eos 配股完成；签署正式协议后，Frontier 将提供全部建设股权资金，Stella 负责执行至商业运营。</p>
+          <p class="context"><span class="label">背景补充：</span>这是双方 2026 年 5 月建立的 2GWh 以上项目管线框架下首批转化项目，也将使用 Frontier 与 Eos 已签的 2GWh 产能预留。至少 Blanquilla 位于得州 Nueces、规模约 201MW，计划 2027 年 12 月上线；其他项目确切地点和投运时间尚未完全披露。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://www.frontierpowerusa.com/frontier-power-usa-converts-920-mwh-battery-storage-project-portfolio-under-stella-strategic-framework/">https://www.frontierpowerusa.com/frontier-power-usa-converts-920-mwh-battery-storage-project-portfolio-under-stella-strategic-framework/</a></p>
+            <p>交叉核验：<a href="https://www.energy-storage.news/frontier-power-usa-picks-four-sites-to-deploy-920mwh-of-eos-zinc-hybrid-cathode-bess/">https://www.energy-storage.news/frontier-power-usa-picks-four-sites-to-deploy-920mwh-of-eos-zinc-hybrid-cathode-bess/</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Opdenergy 完成 2.27 亿美元融资，覆盖智利 90MW/513MWh 运营储能资产</h3>
+          <p class="date">信息日期：2026-07-09；融资公告日期：2026-07-07</p>
+          <div class="tags">
+            <span class="tag">板块：终端储能</span>
+            <span class="tag geo">国家/地区：智利 / 西班牙 / 法国 / 日本</span>
+            <span class="tag company">公司：Opdenergy、SMBC、BNP Paribas、ICO</span>
+            <span class="tag topic">主题：项目融资 / 光储 / 513MWh / 智利</span>
+          </div>
+          <p><span class="label">本次事件：</span>独立电力商 Opdenergy 为其智利运营中可再生能源组合完成 2.27 亿美元融资，由三井住友银行、法国巴黎银行和西班牙官方信贷机构 ICO 牵头。融资资产包括 104MW Sol de Los Andes 光伏、位于 Atacama 的 90MW/513MWh 同名储能、50MW La Estrella 风电及 17MW 光伏组合，资金用途与各项目分配未单独披露。</p>
+          <p class="context"><span class="label">背景补充：</span>Opdenergy 在智利已有 371MW 运营资产，并称未来一年将开工 748MW 管线，其中包括 Atacama 的 196MW/1.2GWh Don Carlos 储能和 O'Higgins 的 90MW/500MWh Alcones 储能。Don Carlos 已获环境许可，计划 2027 年 6 月投运。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://www.energy-storage.news/opdenergy-closes-us227-million-financing-for-chile-renewables-and-bess-portfolio/">https://www.energy-storage.news/opdenergy-closes-us227-million-financing-for-chile-renewables-and-bess-portfolio/</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Field 为英国两座储能项目完成融资，合计 239MW/1GWh</h3>
+          <p class="date">信息日期：2026-07-09</p>
+          <div class="tags">
+            <span class="tag">板块：终端储能</span>
+            <span class="tag geo">国家/地区：英国 / 中国</span>
+            <span class="tag company">公司：Field、Sungrow、Envision、ING、Rabobank、ABN AMRO</span>
+            <span class="tag topic">主题：项目融资 / 1GWh / 供应商确定 / 在建管线</span>
+          </div>
+          <p><span class="label">本次事件：</span>英国储能开发商 Field 为 Keith 和 Hartmoor 两个项目完成融资，合计 239MW/1GWh。苏格兰 Keith 项目为 39MW/200MWh，阳光电源供货、RJ McLeod 负责土建与电气平衡，计划 2027 年投运；英格兰东北部 Hartmoor 为 200MW/800MWh，远景能源供货、H&amp;MV Engineering 承担平衡系统，计划 2028 年并网。</p>
+          <p class="context"><span class="label">背景补充：</span>Keith 融资方为 ING 和 Rabobank，Hartmoor 融资方为 ABN AMRO 和 Rabobank。两项目将从投运首日起使用 Field 自研 Gaia 优化平台，并通过与信用良好交易对手的日前掉期支持收入；融资金额和合同价格未披露。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://www.energy-storage.news/uk-roundup-field-closes-financing-on-1gwh-portfolio-pulse-clean-energy-selects-envision-for-310mwh-project/">https://www.energy-storage.news/uk-roundup-field-closes-financing-on-1gwh-portfolio-pulse-clean-energy-selects-envision-for-310mwh-project/</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>CleanPeak 签署西悉尼机场 15 年供能协议，配建 30MW/120MWh 储能</h3>
+          <p class="date">信息日期：2026-07-07</p>
+          <div class="tags">
+            <span class="tag">板块：终端储能</span>
+            <span class="tag geo">国家/地区：澳大利亚</span>
+            <span class="tag company">公司：CleanPeak Energy、Western Sydney International Airport</span>
+            <span class="tag topic">主题：机场储能 / 15 年协议 / 120MWh / 工商业用电</span>
+          </div>
+          <p><span class="label">本次事件：</span>CleanPeak Energy 与西悉尼国际机场签署 15 年能源服务协议，为机场供应 100% 可再生电力，并在机场建设 30MW/120MWh 电池储能。CleanPeak 负责项目资本投入、持有、运营和维护，机场按长期协议使用电力和储能服务，无需自行承担储能资产建设成本。机场计划 2026 年底开放，项目拟从运营首日投入使用。</p>
+          <p class="context"><span class="label">背景补充：</span>项目地点位于悉尼 CBD 以西约 50 公里的 Badgerys Creek，机场初期年旅客量设计约 500 万人。协议未披露储能系统供应商、电芯路线、项目投资额和施工节点；当前已确定的是规模、资产所有权和 15 年商业安排。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://www.energy-storage.news/australias-cleanpeak-energy-to-deploy-120mwh-battery-storage-system-at-western-sydney-international-airport/">https://www.energy-storage.news/australias-cleanpeak-energy-to-deploy-120mwh-battery-storage-system-at-western-sydney-international-airport/</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="segment">
+      <h2 class="segment-title">政策与贸易 · 5 条</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>中国动力电池安全新国标正式实施，新增底部撞击和快充循环后安全测试</h3>
+          <p class="date">信息日期：2026-07-01；标准状态：现行</p>
+          <div class="tags">
+            <span class="tag">板块：政策与贸易</span>
+            <span class="tag geo">国家/地区：中国</span>
+            <span class="tag company">公司/机构：市场监管总局、国家标准委、工信部、动力电池与车企</span>
+            <span class="tag topic">主题：强制标准 / 电池安全 / 快充 / 热扩散</span>
+          </div>
+          <p><span class="label">本次事件：</span>强制性国家标准 GB 38031-2025《电动汽车用动力蓄电池安全要求》于 7 月 1 日正式实施，替代 2020 版标准。新版提高热扩散测试要求，并新增电池底部撞击测试；快充电池还需先完成 300 次快充循环，再进行外部短路测试，要求不起火、不爆炸。标准由工信部主管，适用于新准入及按过渡要求切换的动力电池与整车产品。</p>
+          <p class="context"><span class="label">背景补充：</span>标准于 2025 年 3 月 28 日发布，主要起草单位包括宁德时代、国轩高科、比亚迪、中创新航、瑞浦兰钧、亿纬锂能、欣旺达以及多家中外车企。7 月 1 日后标准状态已由待实施转为现行，旧版 GB 38031-2020 废止。</p>
+          <div class="links">
+            <p>标准链接：<a href="https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=3AB693FAFF5D9716DF61C61D6FD2187A">https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=3AB693FAFF5D9716DF61C61D6FD2187A</a></p>
+            <p>政策说明：<a href="https://app.www.gov.cn/govdata/gov/202504/17/526982/article.html">https://app.www.gov.cn/govdata/gov/202504/17/526982/article.html</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>重庆发布 2026—2028 充电行动方案，目标累计建设 75 万个以上设施</h3>
+          <p class="date">信息日期：2026-07-07；文件印发：2026-07-06</p>
+          <div class="tags">
+            <span class="tag">板块：政策与贸易</span>
+            <span class="tag geo">国家/地区：中国 / 重庆</span>
+            <span class="tag company">公司/机构：重庆市四部门、充电运营商、重卡企业</span>
+            <span class="tag topic">主题：充电基础设施 / 超充 / 电动重卡 / 车网互动</span>
+          </div>
+          <p><span class="label">本次事件：</span>重庆市四部门联合印发电动汽车充电设施服务能力行动方案，目标到 2028 年底累计建成 75 万个以上充电设施、2,500 座以上超充站，公共充电总容量超过 750 万千瓦，可满足 200 万辆以上新能源汽车需求。方案还要求新增私人充电设施 20 万个以上，并覆盖城市、高速、农村、景区、社区和货运场景。</p>
+          <p class="context"><span class="label">背景补充：</span>重卡是单列任务：到 2028 年新建电动重卡大功率超充站 100 座以上，推广电动超充重卡不少于 1,500 辆。方案同时包含车网互动、投诉热线、收费和运维整治，以及大功率站点报装接电流程优化，执行期为 2026—2028 年。</p>
+          <div class="links">
+            <p>政策链接：<a href="https://www.cq.gov.cn/ywdt/jrcq/202607/t20260707_15802889.html">https://www.cq.gov.cn/ywdt/jrcq/202607/t20260707_15802889.html</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>印度把锂离子电池制造设备关税优惠延长至 2029 年 3 月</h3>
+          <p class="date">信息日期：2026-07-09；政策状态：立即生效</p>
+          <div class="tags">
+            <span class="tag">板块：政策与贸易</span>
+            <span class="tag geo">国家/地区：印度</span>
+            <span class="tag company">公司/机构：印度中央政府、CBIC、电池制造企业</span>
+            <span class="tag topic">主题：进口关税 / 电芯制造设备 / 本地化 / 2029</span>
+          </div>
+          <p><span class="label">本次事件：</span>印度政府把电子制造及锂离子电池生产设备的关税优惠延长至 2029 年 3 月 31 日，并立即实施。印度中央间接税和海关委员会将优惠设备清单扩展至 85 类，覆盖混料、涂布、辊压、分切、卷绕、叠片、注液、焊接、测试、化成老化、检验和包装，以及溶剂回收、除尘和污水处理等辅助设备。</p>
+          <p class="context"><span class="label">背景补充：</span>新清单替代原有豁免通知中的较窄条目，并为每类设备列明海关税则编码。政策主要降低印度尚不能广泛本地供应的专用设备进口成本，适用对象包括动力和储能电芯工厂；企业仍须满足母通知规定的指定用途和申报条件。</p>
+          <div class="links">
+            <p>新闻链接：<a href="https://economictimes.indiatimes.com/industry/cons-products/electronics/govt-extends-duty-relief-for-electronics-lithium-ion-battery-manufacturing-till-2029/articleshow/132274973.cms">https://economictimes.indiatimes.com/industry/cons-products/electronics/govt-extends-duty-relief-for-electronics-lithium-ion-battery-manufacturing-till-2029/articleshow/132274973.cms</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>马来西亚收紧整车进口纯电车准入，最低 CIF 20 万林吉特且功率不低于 180kW</h3>
+          <p class="date">信息日期：2026-07-01；政策公布：2026-05-06</p>
+          <div class="tags">
+            <span class="tag">板块：政策与贸易</span>
+            <span class="tag geo">国家/地区：马来西亚</span>
+            <span class="tag company">公司/机构：马来西亚投资、贸易与工业部，纯电车进口商</span>
+            <span class="tag topic">主题：CBU 进口 / 最低价格 / 本地组装 / 市场准入</span>
+          </div>
+          <p><span class="label">本次事件：</span>马来西亚投资、贸易与工业部规定，自 7 月 1 日起，所有以整车形式进口的纯电动车必须同时满足最低 CIF 完税前价值 20 万林吉特，以及电机功率不低于 180kW 两项条件；功率门槛由原来的 200kW 调整为 180kW。此前四年的特许准证特殊豁免已于 2025 年底到期。</p>
+          <p class="context"><span class="label">背景补充：</span>政策允许豁免期内已在库、已到港或在途的车辆按原安排售完，新增进口则适用新门槛。规则直接限制低价 CBU 电动车导入，鼓励品牌以当地组装方式进入大众市场；文件未改变 CKD 本地组装车型的准入条件。</p>
+          <div class="links">
+            <p>政策链接：<a href="https://www.miti.gov.my/miti/resources/Media%20Release/SIARAN_MEDIA_PENAMATAN_PENGECUALIAN_KHAS_6_Mei_2026_edited.pdf">https://www.miti.gov.my/miti/resources/Media%20Release/SIARAN_MEDIA_PENAMATAN_PENGECUALIAN_KHAS_6_Mei_2026_edited.pdf</a></p>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>澳大利亚 CIS 储能招标预留 2GWh，要求原住民分享至少 5% 股权或等值收入</h3>
+          <p class="date">信息日期：2026-07-09；Tender 10 截止：2026-08-18</p>
+          <div class="tags">
+            <span class="tag">板块：政策与贸易</span>
+            <span class="tag geo">国家/地区：澳大利亚</span>
+            <span class="tag company">公司/机构：DCCEEW、ASL、储能开发商、First Nations 社区</span>
+            <span class="tag topic">主题：储能招标 / 16GWh / 股权分享 / 政府承购</span>
+          </div>
+          <p><span class="label">本次事件：</span>澳大利亚容量投资计划 Tender 9 和 Tender 10 首次设置 First Nations 专项配额。Tender 10 面向 4GW/16GWh 清洁可调度容量，其中 500MW/2GWh 预留给承诺原住民社区持有至少 5% 股权、分享等值收入或采用两者组合的项目；Tender 9 的 5GW 发电招标另预留 500MW。</p>
+          <p class="context"><span class="label">背景补充：</span>Tender 10 已于 6 月 23 日开放，8 月 18 日截止，预计 12 月公布结果，并可能成为 CIS 最后一轮独立可调度容量招标。专项配额不是自动中标，项目仍须通过技术、交付能力、社区参与和系统可靠性等常规评审。</p>
+          <div class="links">
+            <p>政策链接：<a href="https://www.dcceew.gov.au/energy/renewable/capacity-investment-scheme/first-nations-equity-revenue-sharing-set-aside">https://www.dcceew.gov.au/energy/renewable/capacity-investment-scheme/first-nations-equity-revenue-sharing-set-aside</a></p>
+            <p>招标链接：<a href="https://www.dcceew.gov.au/energy/renewable/capacity-investment-scheme/open-cis-tenders">https://www.dcceew.gov.au/energy/renewable/capacity-investment-scheme/open-cis-tenders</a></p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
