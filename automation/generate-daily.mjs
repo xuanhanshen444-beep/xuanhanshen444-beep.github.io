@@ -404,7 +404,7 @@ ${sections}
   </main>
 </body>
 </html>
-`;
+`.replace(/[ \t]+$/gm, "");
 }
 
 async function updateArchive(reportDate, events) {
@@ -449,10 +449,17 @@ async function main() {
   const reportDate = requestedDate || shanghaiDate();
   if (!/^\d{4}-\d{2}-\d{2}$/.test(reportDate)) throw new Error("Optional report date must be YYYY-MM-DD");
   const cutoff = `${reportDate} ${shanghaiTime()} (${TIME_ZONE})`;
-  const results = [];
+  let results;
 
-  for (const group of researchGroups) {
-    results.push(await researchWithRetry(group, reportDate, cutoff));
+  if (process.env.LITHIUM_DAILY_FIXTURE) {
+    const fixture = JSON.parse(await readFile(process.env.LITHIUM_DAILY_FIXTURE, "utf8"));
+    results = fixture.results;
+    console.log(`Using verified local research fixture: ${process.env.LITHIUM_DAILY_FIXTURE}`);
+  } else {
+    results = [];
+    for (const group of researchGroups) {
+      results.push(await researchWithRetry(group, reportDate, cutoff));
+    }
   }
 
   const events = prepareEvents(results);
