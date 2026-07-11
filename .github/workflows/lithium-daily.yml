@@ -1,0 +1,68 @@
+name: Generate lithium industry daily
+
+on:
+  schedule:
+    # 10:30 UTC is 18:30 in Asia/Shanghai. The job waits to publish at 19:00.
+    - cron: "30 10 * * *"
+  workflow_dispatch:
+    inputs:
+      report_date:
+        description: "Optional report date (YYYY-MM-DD); blank means today in Asia/Shanghai"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lithium-industry-daily
+  cancel-in-progress: false
+
+jobs:
+  generate-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5' }}
+      MIN_NEWS_ITEMS: ${{ vars.MIN_NEWS_ITEMS || '8' }}
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check cloud credentials
+        shell: bash
+        run: |
+          if [[ -z "$OPENAI_API_KEY" ]]; then
+            echo "OPENAI_API_KEY is missing. Add it under Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Research and build today's report
+        run: node automation/generate-daily.mjs "${{ inputs.report_date }}"
+
+      - name: Wait until 19:00 Asia/Shanghai
+        if: github.event_name == 'schedule'
+        run: node automation/wait-until-publish.mjs
+
+      - name: Publish report
+        shell: bash
+        run: |
+          git config user.name "Lithium Daily Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html archive.html reports.json daily-*.html
+          if git diff --cached --quiet; then
+            echo "No website changes to publish."
+            exit 0
+          fi
+          report_date="${{ inputs.report_date }}"
+          if [[ -z "$report_date" ]]; then
+            report_date="$(TZ=Asia/Shanghai date +%F)"
+          fi
+          git commit -m "Publish lithium industry daily $report_date"
+          git push
