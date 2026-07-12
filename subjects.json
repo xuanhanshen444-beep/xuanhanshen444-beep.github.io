@@ -1,6 +1,40 @@
 {
-  "updated_at": "2026-07-11T17:03:01.362Z",
+  "updated_at": "2026-07-12T04:12:09.715Z",
   "subjects": [
+    {
+      "id": "subject-19z0bqb",
+      "name": "比亚迪",
+      "count": 3,
+      "items": [
+        {
+          "subject": "比亚迪",
+          "date": "2026-07-09",
+          "report_date": "2026-07-11",
+          "report_file": "daily-2026-07-11.html",
+          "report_anchor": "news-19",
+          "headline": "比亚迪与Masdar签署11.275GWh储能设备协议",
+          "segment": "终端储能"
+        },
+        {
+          "subject": "比亚迪",
+          "date": "2026-07-09",
+          "report_date": "2026-07-10",
+          "report_file": "daily-2026-07-10.html",
+          "report_anchor": "news-15",
+          "headline": "比亚迪第 1,700 万辆新能源车下线，海豹 08 同步搭载二代刀片电池",
+          "segment": "终端电车"
+        },
+        {
+          "subject": "比亚迪",
+          "date": "2026-07-07",
+          "report_date": "2026-07-10",
+          "report_file": "daily-2026-07-10.html",
+          "report_anchor": "news-14",
+          "headline": "比亚迪半导体 BMS AFE 芯片累计出货超过 1 亿颗",
+          "segment": "电池与装机"
+        }
+      ]
+    },
     {
       "id": "subject-1pza3xe",
       "name": "宁德时代",
@@ -70,31 +104,6 @@
       ]
     },
     {
-      "id": "subject-19z0bqb",
-      "name": "比亚迪",
-      "count": 2,
-      "items": [
-        {
-          "subject": "比亚迪",
-          "date": "2026-07-09",
-          "report_date": "2026-07-11",
-          "report_file": "daily-2026-07-11.html",
-          "report_anchor": "news-19",
-          "headline": "比亚迪与Masdar签署11.275GWh储能设备协议",
-          "segment": "终端储能"
-        },
-        {
-          "subject": "比亚迪",
-          "date": "2026-07-09",
-          "report_date": "2026-07-10",
-          "report_file": "daily-2026-07-10.html",
-          "report_anchor": "news-15",
-          "headline": "比亚迪第 1,700 万辆新能源车下线，海豹 08 同步搭载二代刀片电池",
-          "segment": "终端电车"
-        }
-      ]
-    },
-    {
       "id": "subject-4m57m8",
       "name": "工业和信息化部",
       "count": 2,
@@ -141,22 +150,6 @@
           "report_anchor": "news-17",
           "headline": "Autoliv与小鹏签署战略框架协议，合作扩展至联合开发和全球业务支持",
           "segment": "终端电车"
-        }
-      ]
-    },
-    {
-      "id": "subject-yuvwqa",
-      "name": "比亚迪半导体",
-      "count": 1,
-      "items": [
-        {
-          "subject": "比亚迪半导体",
-          "date": "2026-07-07",
-          "report_date": "2026-07-10",
-          "report_file": "daily-2026-07-10.html",
-          "report_anchor": "news-14",
-          "headline": "比亚迪半导体 BMS AFE 芯片累计出货超过 1 亿颗",
-          "segment": "电池与装机"
         }
       ]
     },
@@ -269,22 +262,6 @@
           "report_anchor": "news-2",
           "headline": "中国两项储能安全规则7月实施，电化学储能涉网性能纳入重大隐患判定",
           "segment": "政策与贸易"
-        }
-      ]
-    },
-    {
-      "id": "subject-1lk0yn6",
-      "name": "海洋网",
-      "count": 1,
-      "items": [
-        {
-          "subject": "海洋网",
-          "date": "2026-07-09",
-          "report_date": "2026-07-10",
-          "report_file": "daily-2026-07-10.html",
-          "report_anchor": "news-15",
-          "headline": "比亚迪第 1,700 万辆新能源车下线，海豹 08 同步搭载二代刀片电池",
-          "segment": "终端电车"
         }
       ]
     },

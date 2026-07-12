@@ -47,7 +47,7 @@ jobs:
           fi
 
       - name: Test cross-report duplicate guard
-        run: node --test automation/duplicate-guard.test.mjs
+        run: node --test automation/*.test.mjs
 
       - name: Research and build the interval report
         run: node automation/generate-daily.mjs "${{ inputs.report_date }}"

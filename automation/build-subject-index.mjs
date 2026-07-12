@@ -4,6 +4,11 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
+const COMPANY_ALIASES = new Map([
+  ["比亚迪半导体", "比亚迪"],
+  ["海洋网", "比亚迪"],
+]);
+
 function decodeHtml(value = "") {
   return value
     .replace(/<[^>]+>/g, "")
@@ -49,6 +54,14 @@ function extractCompanies(card) {
   );
 }
 
+export function canonicalCompany(name) {
+  return COMPANY_ALIASES.get(name) || name;
+}
+
+export function canonicalCompanies(names) {
+  return [...new Set(names.map(canonicalCompany))];
+}
+
 function parseReport(html, report) {
   const items = [];
   const sections = [...html.matchAll(/<section class="segment"[^>]*>[\s\S]*?<\/section>/g)];
@@ -64,7 +77,8 @@ function parseReport(html, report) {
         || card.match(/信息日期[： ·]*(\d{4}-\d{2}-\d{2})/)?.[1]
         || report.date;
       const reportAnchor = card.match(/\sid="([^"]+)"/)?.[1];
-      for (const company of extractCompanies(card)) {
+      const companies = canonicalCompanies(extractCompanies(card));
+      for (const company of companies) {
         items.push({
           subject: company,
           date,
