@@ -7,7 +7,7 @@ import { extractReportEvents, findLikelyDuplicate, normalizeUrl } from "./duplic
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const MODEL = process.env.OPENAI_MODEL || "gpt-5";
-const MIN_NEWS_ITEMS = Number(process.env.MIN_NEWS_ITEMS || 8);
+const MIN_NEWS_ITEMS = Number(process.env.MIN_NEWS_ITEMS || 1);
 const MAX_NEWS_ITEMS = 45;
 const TIME_ZONE = "Asia/Shanghai";
 

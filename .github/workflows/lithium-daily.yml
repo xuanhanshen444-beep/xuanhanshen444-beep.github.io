@@ -28,7 +28,7 @@ jobs:
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5' }}
-      MIN_NEWS_ITEMS: ${{ vars.MIN_NEWS_ITEMS || '8' }}
+      MIN_NEWS_ITEMS: ${{ vars.MIN_NEWS_ITEMS || '1' }}
     steps:
       - name: Check out website
         uses: actions/checkout@v4

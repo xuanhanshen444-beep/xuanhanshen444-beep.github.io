@@ -17,7 +17,7 @@ Required repository secret:
 Optional repository variables:
 
 - `OPENAI_MODEL`: defaults to `gpt-5`.
-- `MIN_NEWS_ITEMS`: defaults to `8`; the workflow fails without changing the
+- `MIN_NEWS_ITEMS`: defaults to `1`; the workflow fails without changing the
   website when fewer verified events survive validation.
 
 The workflow can also be started manually from the Actions tab. Manual runs
