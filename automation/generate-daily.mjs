@@ -89,6 +89,7 @@ const responseSchema = {
           "themes",
           "main_source_label",
           "main_url",
+          "official_source_status",
           "background_sources",
         ],
         properties: {
@@ -103,6 +104,14 @@ const responseSchema = {
           themes: { type: "array", items: { type: "string" }, minItems: 1, maxItems: 5 },
           main_source_label: { type: "string" },
           main_url: { type: "string" },
+          official_source_status: {
+            type: "string",
+            enum: [
+              "已找到公司官网或官方公告原文",
+              "公司官网未检索到原文",
+              "不适用（政府或行业机构原文）",
+            ],
+          },
           background_sources: {
             type: "array",
             maxItems: 3,
@@ -193,18 +202,19 @@ function researchPrompt(group, reportDate, cutoff, windowStart, excludedUrls, hi
 
 硬性要求：
 1. 严格覆盖上述增量窗口。没有重要新闻的板块返回0条，不得凑数；本轮最多${group.maxItems}条，重要事件多时可以充分收录。
-2. 对指定公众号逐项执行“账号名+窗口日期+本板块公司/动作关键词”检索，优先打开mp.weixin.qq.com原文。将公众号作为线索源；除非文章本身是机构首发数据、公司原文或独家采访，否则还要找到公司公告、监管文件、政府原文或可靠原创报道复核。
+2. 对指定公众号逐项执行“账号名+窗口日期+本板块公司/动作关键词”检索，优先打开mp.weixin.qq.com原文。公众号原文可以直接作为main_url，只要正文明确给出主体、动作、日期和可核实的事实，不要求公司官网必须另有同一篇原文；不得把搜索摘要、无署名转载或未注明消息来源的传闻作为主新闻。
 3. 区分文章发布日期和事件日期。公众号在窗口内复盘、转载或重发的旧事件不得收录；只有窗口内出现新的签约、投产、获批、交付、数据披露或其他实质动作才算新增。
 4. 新闻必须是具体主体做了具体事情。排除泛泛综述、股价波动、无新事实的评论、调研传闻、学术论文和搜索摘要。
-5. 每条必须打开并核实正文或原始公告，main_url必须是可直接访问的https/http原文URL，禁止填写搜索结果页或虚构URL。
+5. 每条必须打开并核实正文，main_url必须是可直接访问的https/http原文URL，允许公司官网、监管公告、可靠媒体原创或mp.weixin.qq.com公众号原文，禁止填写搜索结果页或虚构URL。
 6. 优先SMM、Reuters、盖世汽车、中国汽车动力电池产业创新联盟、中汽协、政府/监管机构、公司新闻稿、交易所公告。重大事件尽量用第二来源交叉核实。
-7. 合作、供货、投资、合资和项目里程碑必须查询双方此前关系；有可靠历史时写入background并附background_sources，说明这次相较此前有什么变化。无可靠历史时background填空字符串。
-8. event_details用中文讲清谁、何时、在哪里、与谁、做了什么、项目阶段及已披露的金额/产能/数量/期限/产品/投产交付时间；未披露就明确写“未披露”。
-9. 只有正极与前驱体新闻可填写cathode_impact，而且必须说明对化学路线、原料需求、客户认证、产能或区域供应的具体影响；其他板块填空字符串。
-10. headline必须是“主体+动作+对象/关键数字”，不得使用“布局、发力、值得关注、影响深远”等空话。
-11. info_date使用YYYY-MM-DD；每条填写板块、国家/地区、公司和主题标签。公司标签使用集团规范名，子公司或品牌可在正文说明；例如广汽、广汽国际、广汽能源、广汽埃安统一标记为“广汽集团”。
-12. coverage_note说明本轮检索到的重点来源、哪些指定公众号提供了有效候选以及无法访问的来源，不得笼统声称“已扫描”却没有逐项检索。
-13. 同一事件即使多家媒体报道、标题不同或URL不同也只能保留一次。若历史事件出现实质新进展，必须在event_details中明确写出新增动作及新增日期，否则排除。只输出符合JSON schema的结果。${excluded}${priorHeadlines}`;
+7. 对每条公司新闻检索公司官网、投资者关系页和交易所公告。找到对应原文时official_source_status填“已找到公司官网或官方公告原文”，并在main_url或background_sources中提供；没有找到时填“公司官网未检索到原文”，不得虚构官网链接。政府或行业机构原文填“不适用（政府或行业机构原文）”。
+8. 合作、供货、投资、合资和项目里程碑必须查询双方此前关系；有可靠历史时写入background并附background_sources，说明这次相较此前有什么变化。无可靠历史时background填空字符串。
+9. event_details用中文讲清谁、何时、在哪里、与谁、做了什么、项目阶段及已披露的金额/产能/数量/期限/产品/投产交付时间；未披露就明确写“未披露”。
+10. 只有正极与前驱体新闻可填写cathode_impact，而且必须说明对化学路线、原料需求、客户认证、产能或区域供应的具体影响；其他板块填空字符串。
+11. headline必须是“主体+动作+对象/关键数字”，不得使用“布局、发力、值得关注、影响深远”等空话。
+12. info_date使用YYYY-MM-DD；每条填写板块、国家/地区、公司和主题标签。公司标签使用集团规范名，子公司或品牌可在正文说明；例如广汽、广汽国际、广汽能源、广汽埃安统一标记为“广汽集团”。
+13. coverage_note说明本轮检索到的重点来源、哪些指定公众号提供了有效候选以及无法访问的来源，不得笼统声称“已扫描”却没有逐项检索。
+14. 同一事件即使多家媒体报道、标题不同或URL不同也只能保留一次。若历史事件出现实质新进展，必须在event_details中明确写出新增动作及新增日期，否则排除。只输出符合JSON schema的结果。${excluded}${priorHeadlines}`;
 }
 
 async function callOpenAI(group, reportDate, cutoff, windowStart, excludedUrls, historicalEvents) {
@@ -342,7 +352,7 @@ function renderTags(event) {
   return tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("\n              ");
 }
 
-function renderCard(event, index) {
+export function renderCard(event, index) {
   const background = event.background
     ? `<p><strong>背景补充：</strong>${escapeHtml(event.background)}</p>`
     : "";
@@ -352,6 +362,9 @@ function renderCard(event, index) {
   const backgroundLinks = event.background_sources.map((source) =>
     `<p><strong>背景链接：</strong><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.label)} · ${escapeHtml(source.url)}</a></p>`,
   ).join("\n                ");
+  const officialSourceNote = event.official_source_status === "公司官网未检索到原文"
+    ? `<p class="source-status"><strong>官网核验：</strong>公司官网未检索到原文</p>`
+    : "";
 
   return `          <article class="card" id="news-${index}">
             <div class="card-topline"><span>${String(index).padStart(2, "0")}</span><time datetime="${escapeHtml(event.info_date)}">信息日期 · ${escapeHtml(event.info_date)}</time></div>
@@ -363,6 +376,7 @@ function renderCard(event, index) {
               ${renderTags(event)}
             </div>
             <div class="links">
+              ${officialSourceNote}
               <p><strong>新闻链接：</strong><a href="${escapeHtml(event.main_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(event.main_source_label)} · ${escapeHtml(event.main_url)}</a></p>
               ${backgroundLinks}
             </div>
@@ -446,6 +460,7 @@ ${cards}
     .tags span { padding:3px 8px; border:1px solid #bfdaed; border-radius:999px; background:#f6fbff; color:#3d607a; font-size:.77rem; font-weight:700; }
     .links { margin-top:14px; padding-top:10px; border-top:1px dashed #bad5e9; }
     .links p { margin:6px 0; font-size:.82rem; }
+    .links .source-status { padding:6px 8px; border-left:3px solid var(--coral); background:#fff7f5; color:#6c433c; }
     footer { margin-top:34px; padding-top:16px; border-top:2px dashed var(--line); color:var(--muted); font-size:.86rem; }
     @media (max-width:720px) { .page{width:min(100% - 20px,1120px);padding-top:14px}.site-nav{align-items:flex-start}.site-nav .brand{max-width:150px}.nav-links{gap:12px}.masthead{padding:20px}h1{font-size:1.85rem}.segment-jump{align-items:flex-start}.report-head{align-items:flex-start;flex-direction:column;gap:4px}.card-grid{grid-template-columns:1fr}.card{padding:16px} }
   </style>
@@ -553,4 +568,6 @@ async function main() {
   console.log(`Prepared ${reportDate}: ${events.length} verified events across ${new Set(events.map((event) => event.segment)).size} segments.`);
 }
 
-await main();
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  await main();
+}
