@@ -10,6 +10,7 @@ const MODEL = process.env.OPENAI_MODEL || "gpt-5";
 const MIN_NEWS_ITEMS = Number(process.env.MIN_NEWS_ITEMS || 1);
 const MAX_NEWS_ITEMS = 45;
 const TIME_ZONE = "Asia/Shanghai";
+const DEFAULT_PUBLISH_TIME = "16:30";
 
 const designatedWechatSources = [
   "崔东树",
@@ -151,15 +152,23 @@ function shanghaiTime(date = new Date()) {
   }).format(date);
 }
 
+export function extractPublicationCutoff(html, reportDate) {
+  const cutoff = html.match(/资料截止\s*([^<]+)<\/span>/)?.[1]?.trim();
+  return cutoff || `${reportDate} ${DEFAULT_PUBLISH_TIME} (${TIME_ZONE})`;
+}
+
 async function publicationContext(reportDate) {
   const reportsFile = JSON.parse(await readFile(path.join(ROOT, "reports.json"), "utf8"));
   const previousReport = reportsFile.reports
     .filter((report) => report.date < reportDate)
     .sort((left, right) => right.date.localeCompare(left.date))[0];
-  const fallbackStart = new Date(`${reportDate}T11:00:00.000Z`);
+  const fallbackStart = new Date(`${reportDate}T08:30:00.000Z`);
   fallbackStart.setUTCDate(fallbackStart.getUTCDate() - 7);
+  const previousHtml = previousReport
+    ? await readFile(path.join(ROOT, previousReport.file), "utf8")
+    : "";
   const windowStart = previousReport
-    ? `${previousReport.date} 19:00 (${TIME_ZONE})`
+    ? extractPublicationCutoff(previousHtml, previousReport.date)
     : `${shanghaiDate(fallbackStart)} 00:00 (${TIME_ZONE})`;
   const excludedUrls = [];
   const historicalEvents = [];
@@ -482,7 +491,7 @@ ${siteNavigation(currentPage)}
     </nav>
     <div class="report-head"><h2>新闻罗列</h2><span>按政策、上游、正极、电池、电车、储能排序；无重要新闻的板块不展示</span></div>
 ${sections}
-    <footer>自动更新时间：每周一、周三、周五 19:00（Asia/Shanghai）。内容仅作行业信息整理，请以链接所示原始公告与报道为准。</footer>
+    <footer>自动更新时间：每周一、周三、周五 16:30（Asia/Shanghai）。内容仅作行业信息整理，请以链接所示原始公告与报道为准。</footer>
   </main>
 </body>
 </html>

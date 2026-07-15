@@ -122,8 +122,8 @@ function ensureSubjectNavigation(html) {
     .replaceAll(">历史日报<", ">历史报告<")
     .replaceAll("查看日报", "查看报告")
     .replaceAll("历史日报列表", "历史报告列表")
-    .replaceAll("自动更新时间：每天 19:00（Asia/Shanghai）。", "自动更新时间：每周一、周三、周五 19:00（Asia/Shanghai）。")
-    .replaceAll("计划更新时间：每天 19:00（Asia/Shanghai）。", "计划更新时间：每周一、周三、周五 19:00（Asia/Shanghai）。")
+    .replace(/自动更新时间：(?:每天|每周一、周三、周五)\s*19:00（Asia\/Shanghai）。/g, "自动更新时间：每周一、周三、周五 16:30（Asia/Shanghai）。")
+    .replace(/计划更新时间：(?:每天|每周一、周三、周五)\s*19:00（Asia\/Shanghai）。/g, "计划更新时间：每周一、周三、周五 16:30（Asia/Shanghai）。")
     .replaceAll("主体归纳", "企业动态")
     .replaceAll('aria-label="日报导航"', 'aria-label="报告导航"');
   if (!updated.includes('href="subjects.html"')) {

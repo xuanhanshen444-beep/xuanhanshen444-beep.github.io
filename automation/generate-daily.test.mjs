@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { renderCard } from "./generate-daily.mjs";
+import { extractPublicationCutoff, renderCard } from "./generate-daily.mjs";
 
 const event = {
   segment: "终端电车",
@@ -31,4 +31,19 @@ test("does not add the missing-source label when an official source was found", 
     official_source_status: "已找到公司官网或官方公告原文",
   }, 1);
   assert.doesNotMatch(html, /官网核验/);
+});
+
+test("uses the prior report's actual source cutoff across a schedule change", () => {
+  const html = '<span>资料截止 2026-07-13 19:24 (Asia/Shanghai)</span>';
+  assert.equal(
+    extractPublicationCutoff(html, "2026-07-13"),
+    "2026-07-13 19:24 (Asia/Shanghai)",
+  );
+});
+
+test("falls back to the new 16:30 publication time when cutoff metadata is absent", () => {
+  assert.equal(
+    extractPublicationCutoff("<html></html>", "2026-07-18"),
+    "2026-07-18 16:30 (Asia/Shanghai)",
+  );
 });

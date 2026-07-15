@@ -1,9 +1,9 @@
 # Cloud daily publishing
 
 The `Generate lithium industry briefing` workflow runs on Monday, Wednesday and
-Friday. It starts at 18:30 Asia/Shanghai, researches events since the previous
+Friday. It starts at 16:00 Asia/Shanghai, researches events since the previous
 published report with the OpenAI Responses API and web search, validates the
-result, waits until 19:00, and commits the report and subject index.
+result, waits until 16:30, and commits the report and subject index.
 
 Before publishing, the generator compares each candidate with historical report
 URLs and event identity (date, companies, headline, project/product and key
