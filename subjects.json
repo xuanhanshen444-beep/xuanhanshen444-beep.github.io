@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-14T14:00:07.252Z",
+  "updated_at": "2026-07-15T09:11:21.078Z",
   "subjects": [
     {
       "id": "subject-19z0bqb",
@@ -56,8 +56,17 @@
     {
       "id": "subject-1pza3xe",
       "name": "宁德时代",
-      "count": 4,
+      "count": 5,
       "items": [
+        {
+          "subject": "宁德时代",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-1",
+          "headline": "Coulomb Solutions三款移动LFP储能系统获准申领加州CORE购置券",
+          "segment": "政策与贸易"
+        },
         {
           "subject": "宁德时代",
           "date": "2026-07-12",
@@ -93,6 +102,40 @@
           "report_anchor": "news-5",
           "headline": "中国电池与储能联盟倡议60天内支付供应商账款，宁德时代等响应",
           "segment": "政策与贸易"
+        }
+      ]
+    },
+    {
+      "id": "subject-npb4kt",
+      "name": "广汽集团",
+      "count": 3,
+      "items": [
+        {
+          "subject": "广汽集团",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-7",
+          "headline": "广汽集团预计上半年亏损40.6亿至45.7亿元，新能源转型投入继续承压",
+          "segment": "终端电车"
+        },
+        {
+          "subject": "广汽集团",
+          "date": "2026-07-10",
+          "report_date": "2026-07-11",
+          "report_file": "daily-2026-07-11.html",
+          "report_anchor": "news-13",
+          "headline": "广汽与引望合作车型启境GT7启动全国交付，支持6C超充",
+          "segment": "终端电车"
+        },
+        {
+          "subject": "广汽集团",
+          "date": "2026-07-08",
+          "report_date": "2026-07-10",
+          "report_file": "daily-2026-07-10.html",
+          "report_anchor": "news-21",
+          "headline": "广汽联合 GreenV 与 99，计划 2030 年前在巴西部署 242 座快充站",
+          "segment": "终端电车"
         }
       ]
     },
@@ -156,31 +199,6 @@
       ]
     },
     {
-      "id": "subject-npb4kt",
-      "name": "广汽集团",
-      "count": 2,
-      "items": [
-        {
-          "subject": "广汽集团",
-          "date": "2026-07-10",
-          "report_date": "2026-07-11",
-          "report_file": "daily-2026-07-11.html",
-          "report_anchor": "news-13",
-          "headline": "广汽与引望合作车型启境GT7启动全国交付，支持6C超充",
-          "segment": "终端电车"
-        },
-        {
-          "subject": "广汽集团",
-          "date": "2026-07-08",
-          "report_date": "2026-07-10",
-          "report_file": "daily-2026-07-10.html",
-          "report_anchor": "news-21",
-          "headline": "广汽联合 GreenV 与 99，计划 2030 年前在巴西部署 242 座快充站",
-          "segment": "终端电车"
-        }
-      ]
-    },
-    {
       "id": "subject-10kfnzf",
       "name": "零跑汽车",
       "count": 2,
@@ -201,6 +219,31 @@
           "report_file": "daily-2026-07-10.html",
           "report_anchor": "news-17",
           "headline": "零跑 B10 在墨西哥完成认证并交付，借 Stellantis 网络进入北美",
+          "segment": "终端电车"
+        }
+      ]
+    },
+    {
+      "id": "subject-1ap6baw",
+      "name": "瑞浦兰钧",
+      "count": 2,
+      "items": [
+        {
+          "subject": "瑞浦兰钧",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-5",
+          "headline": "瑞浦兰钧上半年户储电芯出货居全球第一，工商业储能电芯居第二",
+          "segment": "电池与装机"
+        },
+        {
+          "subject": "瑞浦兰钧",
+          "date": "2026-07-12",
+          "report_date": "2026-07-13",
+          "report_file": "daily-2026-07-13.html",
+          "report_anchor": "news-8",
+          "headline": "中国一汽悦意08上市并启动交付，三套电池覆盖增程与纯电版本",
           "segment": "终端电车"
         }
       ]
@@ -252,6 +295,31 @@
           "report_anchor": "news-6",
           "headline": "Eni 以 2.25 亿美元收购 EnergyX 智利 Black Giant 锂项目 25% 股权",
           "segment": "上游镍钴锂"
+        }
+      ]
+    },
+    {
+      "id": "subject-19zfmlq",
+      "name": "Frontier Power USA",
+      "count": 2,
+      "items": [
+        {
+          "subject": "Frontier Power USA",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-10",
+          "headline": "Frontier Power USA选定德州Wildfire 100MW/400MWh长时储能项目",
+          "segment": "终端储能"
+        },
+        {
+          "subject": "Frontier Power USA",
+          "date": "2026-07-09",
+          "report_date": "2026-07-10",
+          "report_file": "daily-2026-07-10.html",
+          "report_anchor": "news-26",
+          "headline": "Frontier Power 与 Stella 选定四个项目，计划部署 230MW/920MWh Eos 锌储能",
+          "segment": "终端储能"
         }
       ]
     },
@@ -329,6 +397,38 @@
       ]
     },
     {
+      "id": "subject-10c45el",
+      "name": "广汽本田",
+      "count": 1,
+      "items": [
+        {
+          "subject": "广汽本田",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-7",
+          "headline": "广汽集团预计上半年亏损40.6亿至45.7亿元，新能源转型投入继续承压",
+          "segment": "终端电车"
+        }
+      ]
+    },
+    {
+      "id": "subject-1e4vo29",
+      "name": "广汽丰田",
+      "count": 1,
+      "items": [
+        {
+          "subject": "广汽丰田",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-7",
+          "headline": "广汽集团预计上半年亏损40.6亿至45.7亿元，新能源转型投入继续承压",
+          "segment": "终端电车"
+        }
+      ]
+    },
+    {
       "id": "subject-14m2d13",
       "name": "国城矿业",
       "count": 1,
@@ -393,6 +493,22 @@
       ]
     },
     {
+      "id": "subject-1ffjqa5",
+      "name": "昊铂",
+      "count": 1,
+      "items": [
+        {
+          "subject": "昊铂",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-7",
+          "headline": "广汽集团预计上半年亏损40.6亿至45.7亿元，新能源转型投入继续承压",
+          "segment": "终端电车"
+        }
+      ]
+    },
+    {
       "id": "subject-ty8aqb",
       "name": "吉利集团",
       "count": 1,
@@ -404,6 +520,22 @@
           "report_file": "daily-2026-07-10.html",
           "report_anchor": "news-19",
           "headline": "吉利银河 TT 全球首发，采用 800V 架构和激光雷达辅助驾驶",
+          "segment": "终端电车"
+        }
+      ]
+    },
+    {
+      "id": "subject-eo9894",
+      "name": "吉利汽车",
+      "count": 1,
+      "items": [
+        {
+          "subject": "吉利汽车",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-6",
+          "headline": "吉利EX2在澳大利亚公布售价，35.3kWh版本起价26490澳元",
           "segment": "终端电车"
         }
       ]
@@ -421,6 +553,70 @@
           "report_anchor": "news-19",
           "headline": "吉利银河 TT 全球首发，采用 800V 架构和激光雷达辅助驾驶",
           "segment": "终端电车"
+        }
+      ]
+    },
+    {
+      "id": "subject-lvcyxa",
+      "name": "加利福尼亚州政府",
+      "count": 1,
+      "items": [
+        {
+          "subject": "加利福尼亚州政府",
+          "date": "2026-07-13",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-2",
+          "headline": "加州推出MyFirstEV即时补贴，首次购买零排放车最高可减3500美元",
+          "segment": "政策与贸易"
+        }
+      ]
+    },
+    {
+      "id": "subject-pe30z0",
+      "name": "加州公用事业委员会",
+      "count": 1,
+      "items": [
+        {
+          "subject": "加州公用事业委员会",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-9",
+          "headline": "Sunrun加州户储虚拟电厂扩至425MW，接入超过11万台家庭电池",
+          "segment": "终端储能"
+        }
+      ]
+    },
+    {
+      "id": "subject-ppvo3h",
+      "name": "加州空气资源委员会",
+      "count": 1,
+      "items": [
+        {
+          "subject": "加州空气资源委员会",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-1",
+          "headline": "Coulomb Solutions三款移动LFP储能系统获准申领加州CORE购置券",
+          "segment": "政策与贸易"
+        }
+      ]
+    },
+    {
+      "id": "subject-c2cyeg",
+      "name": "加州能源委员会",
+      "count": 1,
+      "items": [
+        {
+          "subject": "加州能源委员会",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-9",
+          "headline": "Sunrun加州户储虚拟电厂扩至425MW，接入超过11万台家庭电池",
+          "segment": "终端储能"
         }
       ]
     },
@@ -537,22 +733,6 @@
       ]
     },
     {
-      "id": "subject-1ap6baw",
-      "name": "瑞浦兰钧",
-      "count": 1,
-      "items": [
-        {
-          "subject": "瑞浦兰钧",
-          "date": "2026-07-12",
-          "report_date": "2026-07-13",
-          "report_file": "daily-2026-07-13.html",
-          "report_anchor": "news-8",
-          "headline": "中国一汽悦意08上市并启动交付，三套电池覆盖增程与纯电版本",
-          "segment": "终端电车"
-        }
-      ]
-    },
-    {
       "id": "subject-1me6jq4",
       "name": "赛力斯集团",
       "count": 1,
@@ -565,6 +745,38 @@
           "report_anchor": "news-9",
           "headline": "赛力斯上半年预亏15亿至18亿元，问界汽车预亏10.5亿至13亿元",
           "segment": "终端电车"
+        }
+      ]
+    },
+    {
+      "id": "subject-ofhkep",
+      "name": "厦门钨业",
+      "count": 1,
+      "items": [
+        {
+          "subject": "厦门钨业",
+          "date": "2026-07-15",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-4",
+          "headline": "厦钨新能上半年动力电池正极材料销量3.73万吨，同比增长17.08%",
+          "segment": "正极与前驱体"
+        }
+      ]
+    },
+    {
+      "id": "subject-bxxb24",
+      "name": "厦钨新能",
+      "count": 1,
+      "items": [
+        {
+          "subject": "厦钨新能",
+          "date": "2026-07-15",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-4",
+          "headline": "厦钨新能上半年动力电池正极材料销量3.73万吨，同比增长17.08%",
+          "segment": "正极与前驱体"
         }
       ]
     },
@@ -693,6 +905,22 @@
           "report_anchor": "news-13",
           "headline": "广汽与引望合作车型启境GT7启动全国交付，支持6C超充",
           "segment": "终端电车"
+        }
+      ]
+    },
+    {
+      "id": "subject-6xcqxy",
+      "name": "永兴材料",
+      "count": 1,
+      "items": [
+        {
+          "subject": "永兴材料",
+          "date": "2026-07-13",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-3",
+          "headline": "永兴材料预计上半年净利9.5亿至11.5亿元，锂盐售价回升推动业绩增长",
+          "segment": "上游镍钴锂"
         }
       ]
     },
@@ -873,6 +1101,22 @@
       ]
     },
     {
+      "id": "subject-1pcj41t",
+      "name": "Austin Energy",
+      "count": 1,
+      "items": [
+        {
+          "subject": "Austin Energy",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-11",
+          "headline": "FranklinWH家庭储能进入Austin Energy与Entergy Texas两项虚拟电厂计划",
+          "segment": "终端储能"
+        }
+      ]
+    },
+    {
       "id": "subject-1kq0fyh",
       "name": "Autoliv",
       "count": 1,
@@ -885,6 +1129,38 @@
           "report_anchor": "news-17",
           "headline": "Autoliv与小鹏签署战略框架协议，合作扩展至联合开发和全球业务支持",
           "segment": "终端电车"
+        }
+      ]
+    },
+    {
+      "id": "subject-10aiepr",
+      "name": "Avantus",
+      "count": 1,
+      "items": [
+        {
+          "subject": "Avantus",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-8",
+          "headline": "Fluence为Avantus加州Rexford 2提供200MW/800MWh储能系统与EPC",
+          "segment": "终端储能"
+        }
+      ]
+    },
+    {
+      "id": "subject-kp49ji",
+      "name": "Bimergen Energy",
+      "count": 1,
+      "items": [
+        {
+          "subject": "Bimergen Energy",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-10",
+          "headline": "Frontier Power USA选定德州Wildfire 100MW/400MWh长时储能项目",
+          "segment": "终端储能"
         }
       ]
     },
@@ -953,6 +1229,22 @@
       ]
     },
     {
+      "id": "subject-1ezpyd8",
+      "name": "Coulomb Solutions",
+      "count": 1,
+      "items": [
+        {
+          "subject": "Coulomb Solutions",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-1",
+          "headline": "Coulomb Solutions三款移动LFP储能系统获准申领加州CORE购置券",
+          "segment": "政策与贸易"
+        }
+      ]
+    },
+    {
       "id": "subject-hq3qv4",
       "name": "Critical Metals Corp",
       "count": 1,
@@ -1001,6 +1293,22 @@
       ]
     },
     {
+      "id": "subject-1z00i3w",
+      "name": "Entergy Texas",
+      "count": 1,
+      "items": [
+        {
+          "subject": "Entergy Texas",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-11",
+          "headline": "FranklinWH家庭储能进入Austin Energy与Entergy Texas两项虚拟电厂计划",
+          "segment": "终端储能"
+        }
+      ]
+    },
+    {
       "id": "subject-mtx5yi",
       "name": "Envision",
       "count": 1,
@@ -1028,6 +1336,22 @@
           "report_file": "daily-2026-07-10.html",
           "report_anchor": "news-26",
           "headline": "Frontier Power 与 Stella 选定四个项目，计划部署 230MW/920MWh Eos 锌储能",
+          "segment": "终端储能"
+        }
+      ]
+    },
+    {
+      "id": "subject-8tlghy",
+      "name": "Eos Energy Enterprises",
+      "count": 1,
+      "items": [
+        {
+          "subject": "Eos Energy Enterprises",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-10",
+          "headline": "Frontier Power USA选定德州Wildfire 100MW/400MWh长时储能项目",
           "segment": "终端储能"
         }
       ]
@@ -1129,17 +1453,33 @@
       ]
     },
     {
-      "id": "subject-19zfmlq",
-      "name": "Frontier Power USA",
+      "id": "subject-xmgtlp",
+      "name": "Fluence",
       "count": 1,
       "items": [
         {
-          "subject": "Frontier Power USA",
-          "date": "2026-07-09",
-          "report_date": "2026-07-10",
-          "report_file": "daily-2026-07-10.html",
-          "report_anchor": "news-26",
-          "headline": "Frontier Power 与 Stella 选定四个项目，计划部署 230MW/920MWh Eos 锌储能",
+          "subject": "Fluence",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-8",
+          "headline": "Fluence为Avantus加州Rexford 2提供200MW/800MWh储能系统与EPC",
+          "segment": "终端储能"
+        }
+      ]
+    },
+    {
+      "id": "subject-1odexy9",
+      "name": "FranklinWH",
+      "count": 1,
+      "items": [
+        {
+          "subject": "FranklinWH",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-11",
+          "headline": "FranklinWH家庭储能进入Austin Energy与Entergy Texas两项虚拟电厂计划",
           "segment": "终端储能"
         }
       ]
@@ -1236,6 +1576,22 @@
           "report_file": "daily-2026-07-10.html",
           "report_anchor": "news-13",
           "headline": "LG 新能源与本田合资俄亥俄工厂投产，首批电芯转向储能系统",
+          "segment": "电池与装机"
+        }
+      ]
+    },
+    {
+      "id": "subject-k0jex8",
+      "name": "ICC鑫椤资讯",
+      "count": 1,
+      "items": [
+        {
+          "subject": "ICC鑫椤资讯",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-5",
+          "headline": "瑞浦兰钧上半年户储电芯出货居全球第一，工商业储能电芯居第二",
           "segment": "电池与装机"
         }
       ]
@@ -1465,6 +1821,22 @@
       ]
     },
     {
+      "id": "subject-f8fbbz",
+      "name": "NECI追光新能源",
+      "count": 1,
+      "items": [
+        {
+          "subject": "NECI追光新能源",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-5",
+          "headline": "瑞浦兰钧上半年户储电芯出货居全球第一，工商业储能电芯居第二",
+          "segment": "电池与装机"
+        }
+      ]
+    },
+    {
       "id": "subject-tlrzdz",
       "name": "NextEnergy Group",
       "count": 1,
@@ -1508,6 +1880,22 @@
           "report_file": "daily-2026-07-10.html",
           "report_anchor": "news-23",
           "headline": "Peak Energy 选址萨克拉门托建设 4GWh 钠离子储能工厂",
+          "segment": "终端储能"
+        }
+      ]
+    },
+    {
+      "id": "subject-1ca9ky5",
+      "name": "PG&E",
+      "count": 1,
+      "items": [
+        {
+          "subject": "PG&E",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-9",
+          "headline": "Sunrun加州户储虚拟电厂扩至425MW，接入超过11万台家庭电池",
           "segment": "终端储能"
         }
       ]
@@ -1673,6 +2061,22 @@
       ]
     },
     {
+      "id": "subject-18vrspj",
+      "name": "Southern California Edison",
+      "count": 1,
+      "items": [
+        {
+          "subject": "Southern California Edison",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-9",
+          "headline": "Sunrun加州户储虚拟电厂扩至425MW，接入超过11万台家庭电池",
+          "segment": "终端储能"
+        }
+      ]
+    },
+    {
       "id": "subject-1epmj7s",
       "name": "Stella Energy",
       "count": 1,
@@ -1689,6 +2093,22 @@
       ]
     },
     {
+      "id": "subject-9hp0sc",
+      "name": "Stella Energy Solutions",
+      "count": 1,
+      "items": [
+        {
+          "subject": "Stella Energy Solutions",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-10",
+          "headline": "Frontier Power USA选定德州Wildfire 100MW/400MWh长时储能项目",
+          "segment": "终端储能"
+        }
+      ]
+    },
+    {
       "id": "subject-19ozhy6",
       "name": "Sungrow",
       "count": 1,
@@ -1700,6 +2120,22 @@
           "report_file": "daily-2026-07-10.html",
           "report_anchor": "news-28",
           "headline": "Field 为英国两座储能项目完成融资，合计 239MW/1GWh",
+          "segment": "终端储能"
+        }
+      ]
+    },
+    {
+      "id": "subject-1o3n2r2",
+      "name": "Sunrun",
+      "count": 1,
+      "items": [
+        {
+          "subject": "Sunrun",
+          "date": "2026-07-14",
+          "report_date": "2026-07-15",
+          "report_file": "daily-2026-07-15.html",
+          "report_anchor": "news-9",
+          "headline": "Sunrun加州户储虚拟电厂扩至425MW，接入超过11万台家庭电池",
           "segment": "终端储能"
         }
       ]
