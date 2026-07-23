@@ -7,8 +7,8 @@ import { extractReportEvents, findLikelyDuplicate, normalizeUrl } from "./duplic
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const MODEL = process.env.OPENAI_MODEL || "gpt-5";
-const MIN_NEWS_ITEMS = Number(process.env.MIN_NEWS_ITEMS || 1);
-const MAX_NEWS_ITEMS = 45;
+const MIN_NEWS_ITEMS = Number(process.env.MIN_NEWS_ITEMS || 16);
+const MAX_NEWS_ITEMS = 60;
 const TIME_ZONE = "Asia/Shanghai";
 const DEFAULT_PUBLISH_TIME = "16:30";
 
@@ -48,20 +48,20 @@ const researchGroups = [
   {
     name: "政策与上游",
     segments: ["政策与贸易", "上游镍钴锂"],
-    maxItems: 12,
-    focus: "各国电动车、电池、关键矿产政策及贸易措施；镍、钴、锂矿山、冶炼、资源交易、产能和供应事件。优先政府原文、SMM、Reuters及公司公告。政策需充分覆盖不同国家与地区；上游只保留影响明确的重大项目、交易、政策或供应变化，通常不超过3条。",
+    maxItems: 18,
+    focus: "各国电动车、电池、关键矿产政策及贸易措施；镍、钴、锂矿山、冶炼、资源交易、产能和供应事件；以及有署名、有原文、有论据的政策或资源市场分析。优先政府原文、SMM、Reuters及公司公告。政策需充分覆盖不同国家与地区；上游事实动态通常不超过3条，但可加入少量能解释供需、政策执行或价格机制的独立行业观点。",
   },
   {
     name: "正极与电池",
     segments: ["正极与前驱体", "电池与装机"],
-    maxItems: 15,
-    focus: "瑞翔、EcoPro及主要正极/前驱体厂商的订单、合作、投扩产和客户认证；电池厂供货、装机、工厂、技术量产和行业数据。优先SMM、中国汽车动力电池产业创新联盟、公司公告及Reuters。",
+    maxItems: 20,
+    focus: "瑞翔、EcoPro及主要正极/前驱体厂商的订单、合作、投扩产和客户认证；电池厂供货、装机、工厂、技术量产和行业数据；以及有署名、有数据或产业访谈依据的技术路线、排产、库存和需求分析。优先SMM、中国汽车动力电池产业创新联盟、公司公告、Reuters和指定公众号原文。",
   },
   {
     name: "终端电车",
     segments: ["终端电车"],
-    maxItems: 18,
-    focus: "广泛检索具体车企的新车型、交付、产销、工厂、供应商、召回、出口、充换电合作和市场进入退出。优先Reuters、盖世汽车、中汽协、车企及政府公告；终端电车是本简报的重点板块，不得用泛行业评论替代具体公司动作。完全排除储能项目新闻。",
+    maxItems: 24,
+    focus: "广泛检索具体车企的新车型、交付、产销、工厂、供应商、召回、出口、充换电合作和市场进入退出，并纳入有署名、有原文、有依据的车型竞争、渠道反馈、需求变化和车企策略分析。优先Reuters、盖世汽车、中汽协、车企、政府公告和指定公众号原文；终端电车是本简报重点。观点必须明确标注，不能替代事实核验。完全排除储能项目新闻。",
   },
 ];
 
@@ -73,12 +73,13 @@ const responseSchema = {
     coverage_note: { type: "string" },
     events: {
       type: "array",
-      maxItems: 18,
+      maxItems: 24,
       items: {
         type: "object",
         additionalProperties: false,
         required: [
           "segment",
+          "content_type",
           "headline",
           "info_date",
           "event_details",
@@ -94,6 +95,7 @@ const responseSchema = {
         ],
         properties: {
           segment: { type: "string" },
+          content_type: { type: "string", enum: ["事实动态", "行业观点"] },
           headline: { type: "string" },
           info_date: { type: "string", pattern: "^\\d{4}-\\d{2}-\\d{2}$" },
           event_details: { type: "string" },
@@ -110,6 +112,7 @@ const responseSchema = {
               "已找到公司官网或官方公告原文",
               "公司官网未检索到原文",
               "不适用（政府或行业机构原文）",
+              "不适用（观点内容）",
             ],
           },
           background_sources: {
@@ -199,30 +202,30 @@ function researchPrompt(group, reportDate, cutoff, windowStart, excludedUrls, hi
   const priorHeadlines = historicalEvents.length
     ? `\n以下事件已经发布。即使换了媒体或URL，只要主体、动作、日期或关键数字指向同一事件，也不得重复收录：\n${historicalEvents.slice(0, 100).map((event) => `- ${event.info_date} | ${event.headline}`).join("\n")}`
     : "";
-  return `你是锂电产业链新闻简报的资深研究编辑。请使用 web search 对“${group.name}”进行实时检索，为 ${reportDate}（Asia/Shanghai）整理可核实的公司或机构事件。
+  return `你是锂电产业链新闻简报的资深研究编辑。请使用 web search 对“${group.name}”进行实时检索，为 ${reportDate}（Asia/Shanghai）整理事实动态和有署名的行业观点。
 
 本期新闻窗口：${windowStart} 至 ${cutoff}。只收录在该区间内首次发布或发生实质进展的事件；更早内容只能作为背景，不得独立成条。
 
 本轮只允许以下板块：${group.segments.join("、")}。
 重点：${group.focus}
 
-指定微信公众号线索池：${designatedWechatSources.join("、")}。这些账号用于发现候选事件，不因账号在窗口内发文就自动认定事件是新的。
+指定微信公众号线索池：${designatedWechatSources.join("、")}。这些账号既用于发现事实候选，也用于发现作者明确、原文可打开、论据清楚的行业观点。
 
 硬性要求：
-1. 严格覆盖上述增量窗口。没有重要新闻的板块返回0条，不得凑数；本轮最多${group.maxItems}条，重要事件多时可以充分收录。
-2. 对指定公众号逐项执行“账号名+窗口日期+本板块公司/动作关键词”检索，优先打开mp.weixin.qq.com原文。公众号原文可以直接作为main_url，只要正文明确给出主体、动作、日期和可核实的事实，不要求公司官网必须另有同一篇原文；不得把搜索摘要、无署名转载或未注明消息来源的传闻作为主新闻。
-3. 区分文章发布日期和事件日期。公众号在窗口内复盘、转载或重发的旧事件不得收录；只有窗口内出现新的签约、投产、获批、交付、数据披露或其他实质动作才算新增。
-4. 新闻必须是具体主体做了具体事情。排除泛泛综述、股价波动、无新事实的评论、调研传闻、学术论文和搜索摘要。
+1. 严格覆盖上述增量窗口。扩大候选池，正常一期整体目标18-30条内容，其中可有4-10条行业观点；这是研究深度目标，不能靠重复、传闻或空话凑数。本轮最多${group.maxItems}条。
+2. 对指定公众号逐项执行“账号名+窗口日期+本板块公司/动作/观点关键词”检索，优先打开mp.weixin.qq.com原文。公众号原文可以直接作为main_url。搜索摘要、无署名转载、匿名调研传闻和无法打开的文章不得收录。
+3. content_type只能填“事实动态”或“行业观点”。事实动态必须是窗口内新的签约、投产、获批、交付、数据披露或其他实质动作。行业观点允许没有新公司动作，但必须是窗口内发布的原创分析，写明作者/账号、中心观点、依据、适用范围和不确定性。不要把“观点不等同于事实”的固定提示写入event_details，页面会统一添加。
+4. 区分文章发布日期和事件日期。窗口内复盘、转载或重发的旧事件不得作为事实动态；若文章本身提供了新的独立分析，可仅作为行业观点收录，不得把预测改写成事实。
 5. 每条必须打开并核实正文，main_url必须是可直接访问的https/http原文URL，允许公司官网、监管公告、可靠媒体原创或mp.weixin.qq.com公众号原文，禁止填写搜索结果页或虚构URL。
 6. 优先SMM、Reuters、盖世汽车、中国汽车动力电池产业创新联盟、中汽协、政府/监管机构、公司新闻稿、交易所公告。重大事件尽量用第二来源交叉核实。
-7. 对每条公司新闻检索公司官网、投资者关系页和交易所公告。找到对应原文时official_source_status填“已找到公司官网或官方公告原文”，并在main_url或background_sources中提供；没有找到时填“公司官网未检索到原文”，不得虚构官网链接。政府或行业机构原文填“不适用（政府或行业机构原文）”。
+7. 对每条事实类公司新闻检索公司官网、投资者关系页和交易所公告。找到对应原文时official_source_status填“已找到公司官网或官方公告原文”，并在main_url或background_sources中提供；没有找到时填“公司官网未检索到原文”，不得虚构官网链接。政府或行业机构原文填“不适用（政府或行业机构原文）”。纯行业观点填“不适用（观点内容）”，但观点中引用的关键事实仍需明确来源。
 8. 合作、供货、投资、合资和项目里程碑必须查询双方此前关系；有可靠历史时写入background并附background_sources，说明这次相较此前有什么变化。无可靠历史时background填空字符串。
-9. event_details用中文讲清谁、何时、在哪里、与谁、做了什么、项目阶段及已披露的金额/产能/数量/期限/产品/投产交付时间；未披露就明确写“未披露”。
+9. 事实动态的event_details用中文讲清谁、何时、在哪里、与谁、做了什么、项目阶段及已披露的金额/产能/数量/期限/产品/投产交付时间；未披露就明确写“未披露”。行业观点的event_details写作者/账号、观点、所用数据或观察、适用范围和不确定性。
 10. 只有正极与前驱体新闻可填写cathode_impact，而且必须说明对化学路线、原料需求、客户认证、产能或区域供应的具体影响；其他板块填空字符串。
-11. headline必须是“主体+动作+对象/关键数字”，不得使用“布局、发力、值得关注、影响深远”等空话。
-12. info_date使用YYYY-MM-DD；每条填写板块、国家/地区、公司和主题标签。公司标签使用集团规范名，子公司或品牌可在正文说明；例如广汽、广汽国际、广汽能源、广汽埃安统一标记为“广汽集团”。
-13. coverage_note说明本轮检索到的重点来源、哪些指定公众号提供了有效候选以及无法访问的来源，不得笼统声称“已扫描”却没有逐项检索。
-14. 同一事件即使多家媒体报道、标题不同或URL不同也只能保留一次。若历史事件出现实质新进展，必须在event_details中明确写出新增动作及新增日期，否则排除。只输出符合JSON schema的结果。${excluded}${priorHeadlines}`;
+11. 事实动态headline必须是“主体+动作+对象/关键数字”；行业观点headline必须是“作者/账号+对象+明确观点”。不得使用“布局、发力、值得关注、影响深远”等空话。
+12. info_date使用YYYY-MM-DD；事实动态填事件或公告日期，行业观点填原文发布日期。每条填写板块、国家/地区、公司和主题标签。公司标签使用集团规范名，子公司或品牌可在正文说明；例如广汽、广汽国际、广汽能源、广汽埃安统一标记为“广汽集团”。
+13. coverage_note说明本轮检索到的重点来源、哪些指定公众号提供了事实候选、哪些提供了观点候选以及无法访问的来源，不得笼统声称“已扫描”却没有逐项检索。
+14. 同一事件即使多家媒体报道、标题不同或URL不同也只能保留一次；同一作者或不同作者对相同材料作出的近似观点也只保留信息量最高的一条。事实后续必须有新增动作和日期；观点后续必须有新数据或新推理。只输出符合JSON schema的结果。${excluded}${priorHeadlines}`;
 }
 
 async function callOpenAI(group, reportDate, cutoff, windowStart, excludedUrls, historicalEvents) {
@@ -325,6 +328,7 @@ function prepareEvents(results, excludedUrls = [], historicalEvents = []) {
       acceptedEventSummaries.push(eventSummary);
       events.push({
         ...event,
+        content_type: event.content_type === "行业观点" ? "行业观点" : "事实动态",
         main_url: mainUrl,
         background_sources: (event.background_sources || [])
           .map((source) => ({ ...source, url: normalizeUrl(source.url) }))
@@ -352,6 +356,7 @@ function escapeHtml(value = "") {
 
 function renderTags(event) {
   const tags = [
+    `内容类型 · ${event.content_type || "事实动态"}`,
     `板块 · ${event.segment}`,
     `国家/地区 · ${event.country_region}`,
     ...event.companies.map((company) => `公司 · ${company}`),
@@ -361,6 +366,10 @@ function renderTags(event) {
 }
 
 export function renderCard(event, index) {
+  const isViewpoint = event.content_type === "行业观点";
+  const eventDetails = isViewpoint
+    ? event.event_details.replace(/阅读提示：(?:以上|以下)为作者观点，不等同于已发生事实。?\s*$/u, "").trim()
+    : event.event_details;
   const background = event.background
     ? `<p><strong>背景补充：</strong>${escapeHtml(event.background)}</p>`
     : "";
@@ -377,7 +386,8 @@ export function renderCard(event, index) {
   return `          <article class="card" id="news-${index}">
             <div class="card-topline"><span>${String(index).padStart(2, "0")}</span><time datetime="${escapeHtml(event.info_date)}">信息日期 · ${escapeHtml(event.info_date)}</time></div>
             <h3>${escapeHtml(event.headline)}</h3>
-            <p><strong>本次事件：</strong>${escapeHtml(event.event_details)}</p>
+            <p><strong>${isViewpoint ? "观点摘要" : "本次事件"}：</strong>${escapeHtml(eventDetails)}</p>
+            ${isViewpoint ? '<p class="viewpoint-note"><strong>阅读提示：</strong>以上为作者观点，不等同于已发生事实。</p>' : ""}
             ${background}
             ${cathodeImpact}
             <div class="tags" aria-label="新闻标签">
@@ -385,7 +395,7 @@ export function renderCard(event, index) {
             </div>
             <div class="links">
               ${officialSourceNote}
-              <p><strong>新闻链接：</strong><a href="${escapeHtml(event.main_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(event.main_source_label)} · ${escapeHtml(event.main_url)}</a></p>
+              <p><strong>${isViewpoint ? "观点原文" : "新闻链接"}：</strong><a href="${escapeHtml(event.main_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(event.main_source_label)} · ${escapeHtml(event.main_url)}</a></p>
               ${backgroundLinks}
             </div>
           </article>`;
@@ -464,6 +474,7 @@ ${cards}
     .card h3 { margin:12px 0 10px; color:var(--blue-deep); font-size:1.07rem; line-height:1.5; }
     .card p { margin:9px 0; font-size:.94rem; }
     .impact { padding:10px 12px; border-left:4px solid #59b88a; background:#f1fbf6; }
+    .viewpoint-note { padding:9px 11px; border-left:4px solid #f2c94c; background:#fffcef; color:#62552b; }
     .tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:13px; }
     .tags span { padding:3px 8px; border:1px solid #bfdaed; border-radius:999px; background:#f6fbff; color:#3d607a; font-size:.77rem; font-weight:700; }
     .links { margin-top:14px; padding-top:10px; border-top:1px dashed #bad5e9; }
@@ -479,7 +490,7 @@ ${siteNavigation(currentPage)}
     <header class="masthead">
       <p class="kicker">Lithium Industry Briefing</p>
       <h1>锂电产业链新闻简报</h1>
-      <div class="meta"><span>${reportDate}</span><span>${TIME_ZONE}</span><span>资料截止 ${cutoff}</span><span>${events.length} 条新闻</span></div>
+      <div class="meta"><span>${reportDate}</span><span>${TIME_ZONE}</span><span>资料截止 ${cutoff}</span><span>${events.length} 条内容</span></div>
       <p class="source-note"><strong>来源覆盖：</strong>${escapeHtml(coverageNote)}</p>
     </header>
     <nav class="segment-jump" aria-label="板块直达">
@@ -488,7 +499,7 @@ ${siteNavigation(currentPage)}
         ${jumpLinks}
       </div>
     </nav>
-    <div class="report-head"><h2>新闻罗列</h2><span>按政策、上游、正极、电池、电车排序；无重要新闻的板块不展示</span></div>
+    <div class="report-head"><h2>事实与观点</h2><span>按政策、上游、正极、电池、电车排序；观点均单独标注</span></div>
 ${sections}
     <footer>自动更新时间：每周一、周三、周五 16:30（Asia/Shanghai）。内容仅作行业信息整理，请以链接所示原始公告与报道为准。</footer>
   </main>
@@ -517,7 +528,7 @@ async function updateArchive(reportDate, events) {
         <time datetime="${report.date}">${report.date}</time>
         <div>
           <h2>${escapeHtml(report.title)}</h2>
-          <p>${report.news_count} 条新闻 · ${escapeHtml(report.segments.join("、"))}</p>
+          <p>${report.news_count} 条内容 · ${escapeHtml(report.segments.join("、"))}</p>
         </div>
         <a class="open-link" href="${report.file}">查看报告 →</a>
       </article>`).join("\n");
@@ -561,7 +572,7 @@ async function main() {
     process.env.LITHIUM_DAILY_FIXTURE ? [] : historicalEvents,
   );
   if (events.length < MIN_NEWS_ITEMS) {
-    throw new Error(`Only ${events.length} verified events survived validation; minimum is ${MIN_NEWS_ITEMS}. Existing site was not changed.`);
+    throw new Error(`Only ${events.length} verified facts/viewpoints survived validation; minimum is ${MIN_NEWS_ITEMS}. Existing site was not changed.`);
   }
 
   const coverageNote = `本期增量窗口为${windowStart}至${cutoff}；重点扫描SMM、Reuters、盖世汽车、中国汽车动力电池产业创新联盟、中汽协、指定行业公众号线索池、政府及公司原始公告。${results.map((result) => result.coverage_note).filter(Boolean).join(" ")}`;
@@ -575,7 +586,7 @@ async function main() {
   await updateArchive(reportDate, events);
   await buildSubjectIndex();
 
-  console.log(`Prepared ${reportDate}: ${events.length} verified events across ${new Set(events.map((event) => event.segment)).size} segments.`);
+  console.log(`Prepared ${reportDate}: ${events.length} verified facts/viewpoints across ${new Set(events.map((event) => event.segment)).size} segments.`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {

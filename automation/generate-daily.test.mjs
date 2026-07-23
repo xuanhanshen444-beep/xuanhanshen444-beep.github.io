@@ -4,6 +4,7 @@ import { extractPublicationCutoff, renderCard } from "./generate-daily.mjs";
 
 const event = {
   segment: "终端电车",
+  content_type: "事实动态",
   headline: "某车企发布新车型",
   info_date: "2026-07-14",
   event_details: "某车企于7月14日发布新车型。",
@@ -31,6 +32,32 @@ test("does not add the missing-source label when an official source was found", 
     official_source_status: "已找到公司官网或官方公告原文",
   }, 1);
   assert.doesNotMatch(html, /官网核验/);
+});
+
+test("renders industry viewpoints as attributed analysis instead of fact news", () => {
+  const html = renderCard({
+    ...event,
+    content_type: "行业观点",
+    headline: "芝能汽车：价格战正在转向配置与权益竞争",
+    event_details: "芝能汽车结合近期车型配置与渠道反馈提出判断。",
+    main_source_label: "芝能汽车微信公众号原文",
+    official_source_status: "不适用（观点内容）",
+  }, 1);
+  assert.match(html, /内容类型 · 行业观点/);
+  assert.match(html, /观点摘要/);
+  assert.match(html, /不等同于已发生事实/);
+  assert.match(html, /观点原文/);
+  assert.doesNotMatch(html, /本次事件/);
+});
+
+test("does not duplicate the viewpoint disclaimer from model output", () => {
+  const html = renderCard({
+    ...event,
+    content_type: "行业观点",
+    event_details: "作者基于渠道反馈提出判断。阅读提示：以上为作者观点，不等同于已发生事实。",
+    official_source_status: "不适用（观点内容）",
+  }, 1);
+  assert.equal((html.match(/不等同于已发生事实/g) || []).length, 1);
 });
 
 test("uses the prior report's actual source cutoff across a schedule change", () => {
